@@ -17,8 +17,8 @@ import user from '@/database/fixtures/user'
 
       <div class="flex items-center gap-x-10">
         <nav class="hidden gap-x-4 md:flex">
-          <BaseLink href="/">Home</BaseLink>
-          <BaseLink href="/">Profile</BaseLink>
+          <NuxtLink href="/">Home</NuxtLink>
+          <NuxtLink href="/">Profile</NuxtLink>
         </nav>
 
         <div class="flex gap-x-4">

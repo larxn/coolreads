@@ -72,7 +72,7 @@ defineProps({
           </div>
         </section>
 
-        <EntryFooter :likes="meta.likes" :comments="meta.comments" />
+        <CardFooter :likes="meta.likes" :comments="meta.comments" />
       </section>
     </div>
   </article>
