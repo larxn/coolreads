@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { Book } from '@/lib/models/content'
+import { List } from '@/lib/models/content'
 
 defineProps({
   books: {
-    type: Array as PropType<Book[]>,
+    type: Array as PropType<List['books']>,
     required: true,
   },
 })
