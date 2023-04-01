@@ -1,6 +1,65 @@
 /*-------------------------------------
-  TAILWIND
+  Font
+-------------------------------------*/
+@import 'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=block';
+
+/*-------------------------------------
+  Tailwind
 -------------------------------------*/
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*-------------------------------------
+  General
+-------------------------------------*/
+body {
+  font-family: 'Source Sans Pro', Georgia, 'Times New Roman', Times, serif;
+  overflow: overlay;
+  @apply bg-gray-500 text-white;
+}
+
+hr {
+  border: none;
+}
+
+a {
+  @apply decoration-1 underline-offset-2;
+}
+
+/*-------------------------------------
+  Scroll Bar
+-------------------------------------*/
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 4px;
+  @apply bg-gray-400;
+}
+
+body::-webkit-scrollbar-track {
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  @apply bg-gray-300;
+}
+
+/*-------------------------------------
+  Button
+-------------------------------------*/
+.primary-btn {
+  @apply bg-yellow text-gray-600;
+}
+
+.secondary-btn {
+  @apply bg-white text-gray-600;
+}
+
+.tertiary-btn {
+  @apply border-2 border-white;
+}
