@@ -15,4 +15,15 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+
+  typescript: {
+    tsConfig: {
+      compilerOptions: {
+        paths: {
+          '@': ['.'],
+          '@/*': ['./*'],
+        },
+      },
+    },
+  },
 })
