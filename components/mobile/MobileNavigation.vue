@@ -3,9 +3,9 @@
     <div
       class="mx-auto flex w-full max-w-content-container items-center justify-between px-5"
     >
-      <NuxtLink href="/">
+      <BaseTooltip message="This guy traded 3 neurons for this name.">
         <LogoIcon />
-      </NuxtLink>
+      </BaseTooltip>
 
       <div class="flex items-center gap-x-4">
         <NotificationButton />
