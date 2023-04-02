@@ -23,9 +23,21 @@
     </p>
 
     <nav class="mt-5 flex justify-center gap-x-4">
-      <a class="underline" href="#"> Privacy </a>
-      <a class="underline" href="#"> Terms </a>
-      <a class="underline" href="#"> Cookies </a>
+      <BaseTooltip
+        message="Don't you have a life? Not that I don't need one too."
+      >
+        <NuxtLink class="underline" to="/"> Privacy </NuxtLink>
+      </BaseTooltip>
+
+      <BaseTooltip
+        message="The only hidden stuff you might miss is silly jokes."
+      >
+        <NuxtLink class="underline" to="/"> Terms </NuxtLink>
+      </BaseTooltip>
+
+      <BaseTooltip message="No, we don't eat those around here.">
+        <NuxtLink class="underline" to="/"> Cookies </NuxtLink>
+      </BaseTooltip>
     </nav>
   </footer>
 </template>

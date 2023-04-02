@@ -17,8 +17,14 @@ import user from '@/database/fixtures/user'
 
       <div class="flex items-center gap-x-10">
         <nav class="hidden gap-x-4 md:flex">
-          <NuxtLink href="/">Home</NuxtLink>
-          <NuxtLink href="/">Profile</NuxtLink>
+          <BaseTooltip
+            message="Let’s pretend you have something to do at home."
+          >
+            Home
+          </BaseTooltip>
+          <BaseTooltip message="Wanna have a drink with me instead?">
+            Profile
+          </BaseTooltip>
         </nav>
 
         <div class="flex gap-x-4">
