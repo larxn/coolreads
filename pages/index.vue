@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { review, quote, list } from '@/database/fixtures/recent-activity'
 import { featuredBook } from '@/database/fixtures/widgets'
+
+definePageMeta({
+  title: 'Haylee Caulfield',
+})
 </script>
 
 <template>
