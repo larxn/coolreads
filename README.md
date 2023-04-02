@@ -1,42 +1,32 @@
-# Nuxt 3 Minimal Starter
+# CoolReads 📚
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Remake of [goodreads.com](https://goodreads.com/), a site where you can share your reader's journey (via **quotes**, **lists**, **reviews** and more), meet other bookworms and find those books that will change everything.
 
-## Setup
+The **goals** are to:
 
-Make sure to install the dependencies:
+- Explore web technologies and ideas.
+- Find ways to handle increasing complexity.
+- Figure out my side-project workflow.
 
-```bash
-# yarn
-yarn install
+Still at a very early stage, but you can already check the UI [design](https://www.figma.com/proto/sEZV7Vs1vYPhugnXePQoAA/CoolReads?node-id=807%3A440&scaling=min-zoom&page-id=807%3A89&starting-point-node-id=807%3A440&hide-ui=1); or you can follow the project's [board](https://trello.com/b/qAuxHdOE/coolreads), if you feel like it.
 
-# npm
-npm install
-
-# pnpm
-pnpm install
-```
-
-## Development Server
-
-Start the development server on http://localhost:3000
+## 📚 Installation
 
 ```bash
-npm run dev
+# Download the repo.
+git clone https://github.com/luvejo/coolreads.git
 ```
 
-## Production
-
-Build the application for production:
+## 📚 Build Setup
 
 ```bash
-npm run build
+# Install dependencies and build project.
+$ yarn && yarn build
+
+# Serve.
+$ yarn start
 ```
 
-Locally preview production build:
+## 📚 License
 
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+This project is licensed under the MIT License.
