@@ -1,5 +1,5 @@
 export default {
-  id: 5,
+  id: '5',
   fullName: 'Haylee Caulfield',
   username: 'goldenfish',
   bio: 'I could’ve told you my whole autobiography, but I didn’t felt like it.',
