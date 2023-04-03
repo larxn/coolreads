@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import { useNotifications } from '@/lib/composables/notifications'
+
+const { notifications, onMarkAsRead } = useNotifications()
+</script>
+
 <template>
   <section class="bg-gray-400 py-2 text-white shadow-card">
     <div
@@ -8,7 +14,12 @@
       </BaseTooltip>
 
       <div class="flex items-center gap-x-4">
-        <NotificationButton />
+        <NotificationPopover
+          :notifications="notifications"
+          @mark-as-read="onMarkAsRead"
+        >
+          <NotificationButton :notifications="notifications" />
+        </NotificationPopover>
 
         <button class="flex h-7 w-7 items-center justify-center">
           <MenuIcon />

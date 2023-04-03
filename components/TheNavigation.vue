@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import { useNotifications } from '@/lib/composables/notifications'
 import user from '@/database/fixtures/user'
+
+const { notifications, onMarkAsRead } = useNotifications()
 </script>
 
 <template>
@@ -28,7 +31,12 @@ import user from '@/database/fixtures/user'
         </nav>
 
         <div class="flex gap-x-4">
-          <NotificationButton />
+          <NotificationPopover
+            :notifications="notifications"
+            @mark-as-read="onMarkAsRead"
+          >
+            <NotificationButton :notifications="notifications" />
+          </NotificationPopover>
 
           <BaseAvatar :src="user?.avatarUrl || ''" variant="small" />
         </div>
