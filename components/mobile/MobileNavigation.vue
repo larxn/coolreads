@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useNotifications } from '@/lib/composables/notifications'
-
 const { notifications, onMarkAsRead } = useNotifications()
 </script>
 

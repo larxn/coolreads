@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useNotifications } from '@/lib/composables/notifications'
 import user from '@/database/fixtures/user'
 
 const { notifications, onMarkAsRead } = useNotifications()

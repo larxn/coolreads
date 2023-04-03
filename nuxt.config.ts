@@ -7,6 +7,10 @@ export default defineNuxtConfig({
     },
   ],
 
+  imports: {
+    dirs: ['lib/composables'],
+  },
+
   css: ['@/assets/css/main.css'],
 
   postcss: {
