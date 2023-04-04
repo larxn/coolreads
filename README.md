@@ -24,7 +24,7 @@ git clone https://github.com/luvejo/coolreads.git
 $ yarn && yarn build
 
 # Serve.
-$ yarn start
+$ yarn preview
 ```
 
 ## 📚 License
