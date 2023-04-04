@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import user from '@/database/fixtures/user'
+import { Book } from '@/lib/models/content'
 
 const { notifications, onMarkAsRead } = useNotifications()
+
+const results = ref<Book[]>([])
+const { searchBooks } = useBookSearch(results)
 </script>
 
 <template>
@@ -14,7 +18,13 @@ const { notifications, onMarkAsRead } = useNotifications()
       </BaseTooltip>
 
       <div class="max-w-[150px]">
-        <BaseInput placeholder="Find books..." />
+        <BaseInput
+          placeholder="Find books..."
+          @keyup="(query) => searchBooks(query)"
+        />
+        <div class="relative">
+          <ResultsPopover :results="results" />
+        </div>
       </div>
 
       <div class="flex items-center gap-x-10">
