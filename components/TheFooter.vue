@@ -10,7 +10,18 @@
       >
         @pikisuperstar
       </a>
-      ’s illustrations. Developed by
+      ’s illustrations. Sound Effect by a
+      <a
+        class="font-semibold text-white"
+        href="https://pixabay.com/users/soundsforyou-4861230/"
+        >SoundsForYou</a
+      >.
+      <a
+        class="font-semibold text-white"
+        href="https://www.iconfinder.com/bitfreak86"
+        >bitfreak86</a
+      >
+      made the rocking hand I used as favicon. Developed by
       <a
         class="font-semibold text-white"
         href="https://github.com/luvejo"
