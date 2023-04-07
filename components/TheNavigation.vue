@@ -21,6 +21,7 @@ const { searchBooks } = useBookSearch(results)
         <BaseInput
           placeholder="Find books..."
           @keyup="(query) => searchBooks(query)"
+          @blur="results = []"
         />
         <div class="relative">
           <ResultsPopover :results="results" />
