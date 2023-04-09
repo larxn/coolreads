@@ -11,7 +11,13 @@ export default defineNuxtConfig({
     dirs: ['lib/composables'],
   },
 
+  modules: ['nuxt-graphql-server'],
+
   css: ['@/assets/css/main.css'],
+
+  graphqlServer: {
+    schema: './database/graphql/models/schema.gql',
+  },
 
   postcss: {
     plugins: {
