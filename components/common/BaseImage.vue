@@ -19,7 +19,7 @@ defineEmits(['load'])
   <img
     :src="src"
     :alt="alt"
-    :class="`${opacity} h-full w-full object-cover`"
+    :class="`${opacity} h-full w-full object-cover text-transparent`"
     @error="opacity = 'opacity-0'"
     @load="$emit('load')"
   />
