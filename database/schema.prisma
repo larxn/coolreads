@@ -1,0 +1,173 @@
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+model User {
+  id                   Int                 @id @default(autoincrement())
+  username             String              @db.VarChar(40)
+  firstName            String              @db.VarChar(255)
+  lastName             String              @db.VarChar(255)
+  bio                  String?             @db.VarChar(400)
+  avatarUrl            String              @db.VarChar(255)
+  email                String              @db.VarChar(255)
+  password             String              @db.VarChar(255)
+  comments             Comment[]
+  reviews              Review[]
+  bookLists            BookList[]
+  quotes               Quote[]
+  likes                SocialMeta[]
+  activity             Notification[]      @relation(name: "actor")
+  notifications        Notification[]      @relation(name: "target")
+  featuredBookWidget   FeaturedBookWidget? @relation(fields: [featuredBookWidgetId], references: [id])
+  featuredBookWidgetId Int?
+  challengeScores      UserScore[]
+  createdAt            DateTime            @default(now())
+  updatedAt            DateTime            @updatedAt
+  Activity             Activity[]
+}
+
+model Author {
+  id        Int      @id @default(autoincrement())
+  slug      String   @db.VarChar(255)
+  firstName String   @db.VarChar(255)
+  lastName  String   @db.VarChar(255)
+  bio       String   @db.VarChar(1200)
+  books     Book[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Comment {
+  id           Int        @id @default(autoincrement())
+  content      String     @db.VarChar(400)
+  user         User       @relation(fields: [userId], references: [id])
+  userId       Int
+  socialMeta   SocialMeta @relation(fields: [socialMetaId], references: [id])
+  socialMetaId Int        @unique
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+}
+
+model SocialMeta {
+  id       Int       @id @default(autoincrement())
+  comments Comment[]
+  likes    User[]
+  bookList BookList?
+  review   Review?
+  quote    Quote?
+}
+
+model Review {
+  id           Int         @id @default(autoincrement())
+  content      String      @db.VarChar(2000)
+  rating       Float
+  user         User        @relation(fields: [userId], references: [id])
+  userId       Int
+  book         Book        @relation(fields: [bookId], references: [id])
+  bookId       Int
+  socialMeta   SocialMeta? @relation(fields: [socialMetaId], references: [id])
+  socialMetaId Int?        @unique
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  Activity     Activity[]
+}
+
+model Book {
+  id                  Int                  @id @default(autoincrement())
+  slug                String               @db.VarChar(255)
+  title               String               @db.VarChar(255)
+  description         String               @db.VarChar(3000)
+  coverUrl            String               @db.VarChar(400)
+  authors             Author[]
+  reviews             Review[]
+  booksLists          BookList[]
+  quotes              Quote[]
+  featuredBookWidgets FeaturedBookWidget[]
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+}
+
+model BookList {
+  id           Int         @id @default(autoincrement())
+  slug         String      @db.VarChar(255)
+  name         String      @db.VarChar(255)
+  books        Book[]
+  user         User        @relation(fields: [userId], references: [id])
+  userId       Int
+  socialMeta   SocialMeta? @relation(fields: [socialMetaId], references: [id])
+  socialMetaId Int?        @unique
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  Activity     Activity[]
+}
+
+model Quote {
+  id           Int         @id @default(autoincrement())
+  content      String      @db.VarChar(1200)
+  book         Book        @relation(fields: [bookId], references: [id])
+  bookId       Int
+  user         User        @relation(fields: [userId], references: [id])
+  userId       Int
+  socialMeta   SocialMeta? @relation(fields: [socialMetaId], references: [id])
+  socialMetaId Int?        @unique
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  Activity     Activity[]
+}
+
+model Notification {
+  id           Int      @id @default(autoincrement())
+  actionMarkup String   @db.VarChar(255)
+  isRead       Boolean  @default(false)
+  actor        User     @relation(name: "actor", fields: [actorId], references: [id])
+  actorId      Int
+  target       User     @relation(name: "target", fields: [targetId], references: [id])
+  targetId     Int
+  createdAt    DateTime @default(now())
+}
+
+model FeaturedBookWidget {
+  id        Int      @id @default(autoincrement())
+  book      Book     @relation(fields: [bookId], references: [id])
+  bookId    Int
+  user      User[]
+  createdAt DateTime @default(now())
+}
+
+model UserScore {
+  id                Int             @id @default(autoincrement())
+  score             Int             @default(0)
+  user              User            @relation(fields: [userId], references: [id])
+  userId            Int
+  ReviewChallenge   ReviewChallenge @relation(fields: [reviewChallengeId], references: [id])
+  reviewChallengeId Int
+}
+
+model ReviewChallenge {
+  id         Int         @id @default(autoincrement())
+  name       String      @db.VarChar(255)
+  startDate  DateTime
+  endDate    DateTime
+  userScores UserScore[]
+  createdAt  DateTime    @default(now())
+}
+
+model Activity {
+  id         Int       @id @default(autoincrement())
+  user       User      @relation(fields: [userId], references: [id])
+  userId     Int
+  bookList   BookList? @relation(fields: [bookListId], references: [id])
+  bookListId Int?
+  review     Review?   @relation(fields: [reviewId], references: [id])
+  reviewId   Int?
+  quote      Quote?    @relation(fields: [quoteId], references: [id])
+  quoteId    Int?
+  createdAt  DateTime  @default(now())
+}

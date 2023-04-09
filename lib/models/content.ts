@@ -11,6 +11,11 @@ export type Book = {
   coverUrl: string
 }
 
+export type AuthorName = {
+  firstName: string
+  lastName: string
+}
+
 type ActivityMeta = {
   publishedAt: string
   comments: string[]

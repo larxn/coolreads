@@ -2,8 +2,10 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "concurrently \"nuxt dev\" \"graphql-codegen --watch\"",
     "generate": "nuxt generate",
+    "predev": "graphql-codegen --config codegen.ts",
+    "prebuild": "graphql-codegen --config codegen.ts",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "prepare": "husky install"
@@ -13,15 +15,22 @@
     "*.{css,scss,sass,html,vue}": "stylelint",
     "*.**": "prettier --check --ignore-unknown"
   },
+  "prisma": {
+    "schema": "database/schema.prisma"
+  },
   "devDependencies": {
     "@commitlint/cli": "^17.4.4",
     "@commitlint/config-conventional": "^17.4.4",
+    "@graphql-codegen/cli": "^3.3.0",
+    "@graphql-codegen/client-preset": "^3.0.0",
+    "@nuxtjs/apollo": "^5.0.0-alpha.6",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@rushstack/eslint-patch": "^1.2.0",
     "@types/lodash": "^4.14.192",
     "@vue/eslint-config-prettier": "^7.1.0",
     "@vue/eslint-config-typescript": "^11.0.2",
     "autoprefixer": "^10.4.14",
+    "concurrently": "^8.0.1",
     "eslint": "^8.36.0",
     "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-vue": "^9.9.0",
@@ -32,13 +41,19 @@
     "postcss-html": "^1.5.0",
     "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.2.4",
+    "prisma": "^4.12.0",
     "stylelint": "^15.2.0",
     "stylelint-config-recommended-vue": "^1.4.0",
     "stylelint-config-standard": "^30.0.1",
     "tailwindcss": "^3.2.7",
-    "typescript": "^4.9.5"
+    "typescript": "^5.0.3"
   },
   "dependencies": {
+    "@apollo/server": "^4.5.0",
+    "@as-integrations/h3": "^1.1.5",
+    "@prisma/client": "^4.12.0",
+    "graphql": "^16.6.0",
+    "graphql-tag": "^2.12.6",
     "lodash": "^4.17.21",
     "vue3-popper": "^1.5.0"
   }

@@ -1,0 +1,130 @@
+# -------------------------------------
+# BASE
+# -------------------------------------
+type User {
+  id: ID!
+  username: String!
+  firstName: String!
+  lastName: String
+  bio: String
+  avatarUrl: String!
+  email: String
+  notifications: [Notification!]
+}
+
+type Author {
+  id: ID!
+  slug: String!
+  firstName: String!
+  lastName: String!
+  bio: String
+  books: [Book!]!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Book {
+  id: ID!
+  slug: String!
+  title: String!
+  description: String!
+  coverUrl: String!
+  authors: [Author!]!
+  reviews: [Review!]!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Review {
+  id: ID!
+  content: String!
+  rating: Float!
+  book: Book!
+  user: User!
+  socialMeta: SocialMeta
+  createdAt: String!
+  updatedAt: String!
+}
+
+type BookList {
+  id: ID!
+  name: String!
+  book: [Book]!
+  user: User!
+  socialMeta: SocialMeta
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Quote {
+  id: ID!
+  content: String!
+  book: Book!
+  user: User!
+  socialMeta: SocialMeta
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Comment {
+  id: ID!
+  user: User!
+  content: String!
+  socialMeta: SocialMeta
+  createdAt: String!
+  updatedAt: String!
+}
+
+type SocialMeta {
+  id: ID!
+  comments: [Comment!]!
+  likes: [User!]!
+}
+
+type Notification {
+  id: ID!
+  agent: User!
+  actionMarkup: String!
+  isRead: Boolean!
+  user: User!
+}
+
+type Activity {
+  id: ID!
+  user: User!
+  bookList: BookList
+  review: Review
+  quote: Quote
+  createdAt: String!
+}
+
+# -------------------------------------
+# WIDGETS
+# -------------------------------------
+type FeaturedBookWidget {
+  id: ID!
+  user: User!
+  book: Book!
+}
+
+type UserScore {
+  user: User!
+  score: Int!
+}
+
+type ReviewChallenge {
+  id: ID!
+  userScores: [UserScore!]!
+  startDate: String!
+  endDate: String!
+}
+
+# -------------------------------------
+# OPERATIONS
+# -------------------------------------
+type Query {
+  user(username: String!): User
+  books(search: String, skip: Int, take: Int): [Book!]!
+  notifications(target: String!, skip: Int, take: Int): [Notification!]!
+  activities(userId: Int!, skip: Int, take: Int!): [Activity!]!
+}

@@ -1,0 +1,50 @@
+query getActivitiesByUser($userId: Int!, $take: Int!) {
+  activities(userId: $userId, take: $take) {
+    id
+    review {
+      content
+      rating
+      user {
+        id
+        username
+        firstName
+        lastName
+        avatarUrl
+      }
+      book {
+        id
+        slug
+        coverUrl
+        title
+        authors {
+          id
+          firstName
+          lastName
+        }
+      }
+      socialMeta {
+        id
+        likes {
+          id
+        }
+        comments {
+          id
+        }
+      }
+      createdAt
+    }
+
+    quote {
+      content
+    }
+
+    bookList {
+      book {
+        title
+        coverUrl
+      }
+    }
+
+    createdAt
+  }
+}
