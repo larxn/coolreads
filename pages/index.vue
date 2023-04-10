@@ -1,9 +1,25 @@
 <script setup lang="ts">
-import { review, quote, list } from '@/database/fixtures/recent-activity'
+import getActivitiesByUser from '@/database/graphql/operations/activities-by-user.gql'
 import { featuredBook } from '@/database/fixtures/widgets'
+import { GetActivitiesByUserQuery } from '@/.output/graphql/graphql'
 
 definePageMeta({
   title: 'Haylee Caulfield',
+})
+
+const { data, pending } = useAsyncQuery<GetActivitiesByUserQuery>(
+  getActivitiesByUser,
+  {
+    userId: 1,
+    take: 5,
+  },
+)
+
+const activities = computed(() => {
+  if (data.value?.activities?.length) {
+    return data.value.activities
+  }
+  return []
 })
 </script>
 
@@ -16,24 +32,8 @@ definePageMeta({
       <ActivityTabs />
 
       <section class="flex flex-col gap-y-4">
-        <ReviewCard
-          :user="review.user"
-          :book="review.book"
-          :review="review.review"
-          :meta="review.meta"
-        />
-        <QuoteCard
-          :user="quote.user"
-          :book="quote.book"
-          :quote="quote.quote"
-          :meta="quote.meta"
-        />
-        <ListCard
-          :user="list.user"
-          :books="list.books"
-          :name="list.name"
-          :meta="list.meta"
-        />
+        <div v-if="pending">Loading...</div>
+        <BaseFeed v-else :activities="activities" />
       </section>
     </main>
 

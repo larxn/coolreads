@@ -11,12 +11,20 @@ export default defineNuxtConfig({
     dirs: ['lib/composables'],
   },
 
-  modules: ['nuxt-graphql-server'],
+  modules: ['@nuxtjs/apollo', 'nuxt-graphql-server'],
 
   css: ['@/assets/css/main.css'],
 
   graphqlServer: {
     schema: './database/graphql/models/schema.gql',
+  },
+
+  apollo: {
+    clients: {
+      default: {
+        httpEndpoint: `${process.env.BASE_URL}/api/graphql`,
+      },
+    },
   },
 
   postcss: {
