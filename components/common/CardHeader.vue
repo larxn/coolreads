@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { getFormattedElapsedTime } from '@/lib/utils/format'
+
 defineProps({
   publishedAt: {
     type: String,
@@ -12,6 +14,8 @@ defineProps({
     <div class="hidden items-end gap-x-3 md:flex">
       <slot />
     </div>
-    <time class="flex items-end text-gray-300">{{ publishedAt }}</time>
+    <time class="flex items-end text-gray-300">
+      {{ getFormattedElapsedTime(publishedAt) }}
+    </time>
   </header>
 </template>

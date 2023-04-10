@@ -5,7 +5,7 @@ defineProps({
     required: true,
   },
   comments: {
-    type: Array as PropType<string[]>,
+    type: Number,
     required: true,
   },
 })
@@ -19,8 +19,8 @@ defineProps({
     </div>
 
     <div class="flex items-center gap-x-4">
-      <a v-if="comments.length" class="underline underline-offset-2" href="#">
-        View {{ comments.length }} comments
+      <a v-if="comments" class="underline underline-offset-2" href="#">
+        View {{ comments }} comments
       </a>
 
       <div class="hidden md:block">

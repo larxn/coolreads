@@ -1,24 +1,42 @@
 <script setup lang="ts">
-import { Review } from '@/lib/models/content'
+import { getFormattedAuthorName } from '@/lib/utils/format'
+import { GetActivitiesByUserQuery } from '@/.output/graphql/graphql'
 
-defineProps({
+type Review = Exclude<
+  GetActivitiesByUserQuery['activities'][number]['review'],
+  null | undefined
+>
+
+const props = defineProps({
   user: {
     type: Object as PropType<Review['user']>,
+    required: true,
+  },
+  rating: {
+    type: Number as PropType<Review['rating']>,
     required: true,
   },
   book: {
     type: Object as PropType<Review['book']>,
     required: true,
   },
-  review: {
-    type: Object as PropType<Review['review']>,
+  content: {
+    type: String as PropType<Review['content']>,
     required: true,
   },
-  meta: {
-    type: Object as PropType<Review['meta']>,
+  socialMeta: {
+    type: Object as PropType<Review['socialMeta']>,
+    required: false,
+  },
+  createdAt: {
+    type: String as PropType<Review['createdAt']>,
     required: true,
   },
 })
+
+const authors = computed(() =>
+  props.book.authors.map((author) => getFormattedAuthorName(author)).join(', '),
+)
 </script>
 
 <template>
@@ -29,11 +47,14 @@ defineProps({
 
     <div class="grow">
       <!-- Header (Desktop) -->
-      <CardHeader :published-at="meta.publishedAt">
+      <CardHeader :published-at="createdAt">
         <p>
-          <span class="font-bold">{{ user.fullName }}</span> rated a book
+          <span class="font-bold">
+            {{ user.firstName }} {{ user.lastName }}
+          </span>
+          rated a book
         </p>
-        <BaseRating :value="review.rating" />
+        <BaseRating :value="rating" />
       </CardHeader>
 
       <!-- Card -->
@@ -48,7 +69,9 @@ defineProps({
             <div class="md:hidden">
               <div class="flex items-center gap-x-2">
                 <BaseAvatar :src="user.avatarUrl" variant="medium" />
-                <p class="font-bold">{{ user.fullName }}</p>
+                <p class="font-bold">
+                  {{ user.firstName }} {{ user.lastName }}
+                </p>
                 <ReviewIcon class="text-gray-300" />
               </div>
               <hr class="mb-4 mt-2 h-0.5 bg-gray-500" />
@@ -67,22 +90,25 @@ defineProps({
                 <p>
                   By
                   <span class="italic">
-                    {{ book.authors.map((author) => author).join(', ') }}
+                    {{ authors }}
                   </span>
                 </p>
                 <div class="md:hidden">
-                  <BaseRating :value="review.rating" />
+                  <BaseRating :value="rating" />
                 </div>
               </div>
             </div>
-            <div class="mt-2 line-clamp-5 leading-5">
-              {{ review.comment }}
+            <div v-if="content" class="mt-2 line-clamp-5 leading-5">
+              {{ content }}
             </div>
-            <a class="underline" href="#"> read more </a>
+            <a v-if="content" class="underline" href="#"> read more </a>
           </div>
         </section>
 
-        <CardFooter :likes="meta.likes" :comments="meta.comments" />
+        <CardFooter
+          :likes="socialMeta?.likes.length || 0"
+          :comments="socialMeta?.comments.length || 0"
+        />
       </section>
     </div>
   </article>
