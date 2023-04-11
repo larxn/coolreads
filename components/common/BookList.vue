@@ -1,9 +1,16 @@
 <script setup lang="ts">
-import { List } from '@/lib/models/content'
+import { GetActivitiesByUserQuery } from '@/.output/graphql/graphql'
+
+type BookList = Exclude<
+  GetActivitiesByUserQuery['activities'][number]['bookList'],
+  null | undefined
+>
+
+type Book = Exclude<BookList['books'][number], null>
 
 defineProps({
   books: {
-    type: Array as PropType<List['books']>,
+    type: Array as PropType<Book[]>,
     required: true,
   },
 })

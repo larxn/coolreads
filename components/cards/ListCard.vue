@@ -1,21 +1,30 @@
 <script setup lang="ts">
-import { List } from '@/lib/models/content'
+import { GetActivitiesByUserQuery } from '@/.output/graphql/graphql'
+
+type BookList = Exclude<
+  GetActivitiesByUserQuery['activities'][number]['bookList'],
+  null | undefined
+>
 
 defineProps({
   user: {
-    type: Object as PropType<List['user']>,
+    type: Object as PropType<BookList['user']>,
     required: true,
   },
   books: {
-    type: Array as PropType<List['books']>,
+    type: Array as PropType<BookList['books']>,
     required: true,
   },
   name: {
-    type: String as PropType<List['name']>,
+    type: String as PropType<BookList['name']>,
     required: true,
   },
-  meta: {
-    type: Object as PropType<List['meta']>,
+  socialMeta: {
+    type: Object as PropType<BookList['socialMeta']>,
+    required: true,
+  },
+  createdAt: {
+    type: String as PropType<BookList['createdAt']>,
     required: true,
   },
 })
@@ -29,9 +38,12 @@ defineProps({
 
     <div class="grow">
       <!-- Header (Desktop) -->
-      <CardHeader :published-at="meta.publishedAt">
+      <CardHeader :published-at="createdAt">
         <p>
-          <span class="font-bold">{{ user.fullName }}</span> shared a new list
+          <span class="font-bold">
+            {{ user.firstName }} {{ user.lastName }}
+          </span>
+          shared a new list
         </p>
       </CardHeader>
 
@@ -41,7 +53,10 @@ defineProps({
         <div class="md:hidden">
           <div class="flex items-center gap-x-2">
             <BaseAvatar :src="user.avatarUrl" variant="medium" />
-            <p class="font-bold">{{ user.fullName }}</p>
+            <p class="font-bold">
+              {{ user.firstName }}
+              {{ user.lastName }}
+            </p>
             <BooksIcon class="text-gray-300" />
           </div>
           <hr class="mb-4 mt-2 h-0.5 bg-gray-500" />
@@ -53,7 +68,10 @@ defineProps({
           <BookList :books="books" />
         </section>
 
-        <CardFooter :likes="meta.likes" :comments="meta.comments" />
+        <CardFooter
+          :likes="socialMeta?.likes.length"
+          :comments="socialMeta?.comments.length"
+        />
       </section>
     </div>
   </article>

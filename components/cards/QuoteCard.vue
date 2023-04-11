@@ -1,7 +1,12 @@
 <script setup lang="ts">
-import { Quote } from '@/lib/models/content'
+import { GetActivitiesByUserQuery } from '@/.output/graphql/graphql'
 
-defineProps({
+type Quote = Exclude<
+  GetActivitiesByUserQuery['activities'][number]['quote'],
+  null | undefined
+>
+
+const props = defineProps({
   user: {
     type: Object as PropType<Quote['user']>,
     required: true,
@@ -10,15 +15,21 @@ defineProps({
     type: Object as PropType<Quote['book']>,
     required: true,
   },
-  quote: {
-    type: String as PropType<Quote['quote']>,
+  content: {
+    type: String as PropType<Quote['content']>,
     required: true,
   },
-  meta: {
-    type: Object as PropType<Quote['meta']>,
+  socialMeta: {
+    type: Object as PropType<Quote['socialMeta']>,
+    required: true,
+  },
+  createdAt: {
+    type: String as PropType<Quote['createdAt']>,
     required: true,
   },
 })
+
+const firstAuthor = computed(() => props.book.authors[0])
 </script>
 
 <template>
@@ -29,9 +40,12 @@ defineProps({
 
     <div class="grow">
       <!-- Header (Desktop) -->
-      <CardHeader :published-at="meta.publishedAt">
+      <CardHeader :published-at="createdAt">
         <p>
-          <span class="font-bold">{{ user.fullName }}</span> shared a quote
+          <span class="font-bold">
+            {{ user.firstName }} {{ user.lastName }}
+          </span>
+          shared a quote
         </p>
       </CardHeader>
 
@@ -41,7 +55,10 @@ defineProps({
         <div class="md:hidden">
           <div class="flex items-center gap-x-2">
             <BaseAvatar :src="user.avatarUrl" variant="medium" />
-            <p class="font-bold">{{ user.fullName }}</p>
+            <p class="font-bold">
+              {{ user.firstName }}
+              {{ user.lastName }}
+            </p>
             <QuoteIcon class="text-gray-300" />
           </div>
           <hr class="mb-4 mt-2 h-0.5 bg-gray-500" />
@@ -54,14 +71,14 @@ defineProps({
           </div>
 
           <div>
-            <div class="line-clamp-5 leading-5">{{ quote }}</div>
+            <div class="line-clamp-5 leading-5">{{ content }}</div>
             <a class="underline" href="#"> read more </a>
 
             <div class="text-right">
               <p>
                 ―
                 <span class="font-semibold leading-none">
-                  {{ book.authors[0] }}
+                  {{ firstAuthor.firstName }} {{ firstAuthor.lastName }}
                 </span>
                 <span v-if="book.authors.length > 1"> et al. </span>
               </p>
@@ -72,7 +89,10 @@ defineProps({
           </div>
         </section>
 
-        <CardFooter :likes="meta.likes" :comments="meta.comments" />
+        <CardFooter
+          :likes="socialMeta?.likes.length"
+          :comments="socialMeta?.comments.length"
+        />
       </section>
     </div>
   </article>

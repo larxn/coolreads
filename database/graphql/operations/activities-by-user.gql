@@ -36,15 +36,60 @@ query getActivitiesByUser($userId: Int!, $take: Int!) {
 
     quote {
       content
+      user {
+        id
+        username
+        firstName
+        lastName
+        avatarUrl
+      }
+      book {
+        id
+        slug
+        coverUrl
+        title
+        authors {
+          id
+          firstName
+          lastName
+        }
+      }
+      socialMeta {
+        id
+        likes {
+          id
+        }
+        comments {
+          id
+        }
+      }
+      createdAt
     }
 
     bookList {
-      book {
+      name
+      user {
+        id
+        username
+        firstName
+        lastName
+        avatarUrl
+      }
+      books {
+        id
         title
         coverUrl
       }
+      socialMeta {
+        id
+        likes {
+          id
+        }
+        comments {
+          id
+        }
+      }
+      createdAt
     }
-
-    createdAt
   }
 }
