@@ -37,7 +37,7 @@ const onClick = (activityType?: ActivityType) => {
         <BaseTab
           label="Recent Activity"
           :is-active="!activeType"
-          @click="onClick"
+          @click="onClick()"
         />
         <BaseTab
           label="Reviews"
