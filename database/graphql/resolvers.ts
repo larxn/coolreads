@@ -22,6 +22,11 @@ export default {
       }
 
       return prisma.activity.findMany({
+        orderBy: [
+          {
+            createdAt: 'desc',
+          },
+        ],
         take,
         where: { userId },
         include: {

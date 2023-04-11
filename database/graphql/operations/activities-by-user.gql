@@ -1,6 +1,7 @@
 query getActivitiesByUser($userId: Int!, $take: Int!) {
   activities(userId: $userId, take: $take) {
     id
+    createdAt
     review {
       content
       rating
