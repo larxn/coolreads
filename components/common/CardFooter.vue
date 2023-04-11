@@ -20,7 +20,7 @@ defineProps({
 
     <div class="flex items-center gap-x-4">
       <a v-if="comments" class="underline underline-offset-2" href="#">
-        View {{ comments }} comments
+        View {{ comments }} comment{{ comments > 1 ? 's' : '' }}
       </a>
 
       <div class="hidden md:block">
