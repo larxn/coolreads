@@ -48,3 +48,5 @@ export type Review = {
   }
   meta: ActivityMeta
 }
+
+export type ActivityType = 'review' | 'quote' | 'bookList'

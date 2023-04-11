@@ -119,6 +119,13 @@ type ReviewChallenge {
   endDate: String!
 }
 
+type ActivityStats {
+  user: User!
+  reviews: Int!
+  quotes: Int!
+  bookLists: Int!
+}
+
 # -------------------------------------
 # OPERATIONS
 # -------------------------------------
@@ -126,5 +133,11 @@ type Query {
   user(username: String!): User
   books(search: String, skip: Int, take: Int): [Book!]!
   notifications(target: String!, skip: Int, take: Int): [Notification!]!
-  activities(userId: Int!, skip: Int, take: Int!): [Activity!]!
+  activities(
+    userId: Int!
+    skip: Int
+    take: Int!
+    activityType: String
+  ): [Activity!]!
+  activityStats(userId: Int!): ActivityStats!
 }

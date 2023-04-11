@@ -50,7 +50,7 @@ model Comment {
   user         User       @relation(fields: [userId], references: [id])
   userId       Int
   socialMeta   SocialMeta @relation(fields: [socialMetaId], references: [id])
-  socialMetaId Int        @unique
+  socialMetaId Int
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @updatedAt
 }

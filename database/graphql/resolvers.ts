@@ -1,11 +1,37 @@
 import { PrismaClient } from '@prisma/client'
-import { QueryActivitiesArgs } from '@/.output/graphql/graphql'
+import {
+  QueryActivitiesArgs,
+  QueryActivityStatsArgs,
+} from '@/.output/graphql/graphql'
 
 const prisma = new PrismaClient()
 
 export default {
   Query: {
-    activities: async (_ctx: {}, { userId, take }: QueryActivitiesArgs) => {
+    activityStats: async (_ctx: {}, { userId }: QueryActivityStatsArgs) => {
+      const reviews = await prisma.review.count({
+        where: { userId },
+      })
+
+      const quotes = await prisma.quote.count({
+        where: { userId },
+      })
+
+      const bookLists = await prisma.bookList.count({
+        where: { userId },
+      })
+
+      return {
+        reviews,
+        quotes,
+        bookLists,
+      }
+    },
+
+    activities: async (
+      _ctx: {},
+      { userId, take, activityType }: QueryActivitiesArgs,
+    ) => {
       const common = {
         user: true,
         book: {
@@ -21,6 +47,14 @@ export default {
         },
       }
 
+      const activityTypeFilter = activityType
+        ? {
+            [`${activityType}Id`]: {
+              not: null,
+            },
+          }
+        : {}
+
       return prisma.activity.findMany({
         orderBy: [
           {
@@ -28,7 +62,10 @@ export default {
           },
         ],
         take,
-        where: { userId },
+        where: {
+          userId,
+          ...activityTypeFilter,
+        },
         include: {
           review: {
             include: {

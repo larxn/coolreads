@@ -1,5 +1,5 @@
-query getActivitiesByUser($userId: Int!, $take: Int!) {
-  activities(userId: $userId, take: $take) {
+query getActivitiesByUser($userId: Int!, $take: Int!, $activityType: String) {
+  activities(userId: $userId, take: $take, activityType: $activityType) {
     id
     createdAt
     review {
