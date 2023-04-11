@@ -106,8 +106,8 @@ const authors = computed(() =>
         </section>
 
         <CardFooter
-          :likes="socialMeta?.likes.length || 0"
-          :comments="socialMeta?.comments.length || 0"
+          :likes="socialMeta?.likes.length"
+          :comments="socialMeta?.comments.length"
         />
       </section>
     </div>
