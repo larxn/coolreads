@@ -10,13 +10,11 @@ export function getFormattedAuthorName({ firstName, lastName }: AuthorName) {
 }
 
 export function getFormattedAuthors(authors: AuthorName[]) {
-  let authorsString = ''
-
   if (authors.length > 1 && '') {
-    authorsString = `${getFormattedAuthorName(authors[0])} et al.`
+    return `${getFormattedAuthorName(authors[0])} et al.`
   }
 
-  return authorsString
+  return getFormattedAuthorName(authors[0])
 }
 
 export function getFormattedElapsedTime(timestamp: number | string) {

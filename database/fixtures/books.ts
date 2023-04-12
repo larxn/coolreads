@@ -2,7 +2,12 @@ export const books = [
   {
     id: '1',
     title: 'Last Evening on Earth',
-    authors: ['Roberto Bolaño'],
+    authors: [
+      {
+        firstName: 'Roberto',
+        lastName: 'Bolaño',
+      },
+    ],
     summary: '',
     coverUrl:
       'https://firebasestorage.googleapis.com/v0/b/fictolab.appspot.com/o/coolreads%2Fcovers%2Fleoe.webp?alt=media',
@@ -10,7 +15,12 @@ export const books = [
   {
     id: '2',
     title: 'Crónica del pájaro que da cuerda al mundo',
-    authors: ['Haruki Murakami'],
+    authors: [
+      {
+        firstName: 'Haruki',
+        lastName: 'Murakami',
+      },
+    ],
     summary: '',
     coverUrl:
       'https://firebasestorage.googleapis.com/v0/b/fictolab.appspot.com/o/coolreads%2Fcovers%2Fcdpqdcam.webp?alt=media',
@@ -18,7 +28,12 @@ export const books = [
   {
     id: '3',
     title: 'A Confederacy of Dunces',
-    authors: ['John Kennedy Toole'],
+    authors: [
+      {
+        firstName: 'John',
+        lastName: 'Kennedy Toole',
+      },
+    ],
     summary: '',
     coverUrl:
       'https://firebasestorage.googleapis.com/v0/b/fictolab.appspot.com/o/coolreads%2Fcovers%2Facod.webp?alt=media',
@@ -26,7 +41,12 @@ export const books = [
   {
     id: '4',
     title: 'No Longer Human',
-    authors: ['Osamu Dazai'],
+    authors: [
+      {
+        firstName: 'Osamu',
+        lastName: 'Dazai',
+      },
+    ],
     summary: '',
     coverUrl:
       'https://firebasestorage.googleapis.com/v0/b/fictolab.appspot.com/o/coolreads%2Fcovers%2Fnlh.webp?alt=media',
@@ -34,7 +54,12 @@ export const books = [
   {
     id: '5',
     title: 'The Catcher in the Rye ',
-    authors: ['J.D. Salinger'],
+    authors: [
+      {
+        firstName: 'J. D.',
+        lastName: 'Salinger',
+      },
+    ],
     summary: '',
     coverUrl:
       'https://firebasestorage.googleapis.com/v0/b/fictolab.appspot.com/o/coolreads%2Fcovers%2Ftcitr.webp?alt=media',

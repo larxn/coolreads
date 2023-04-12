@@ -3,17 +3,17 @@ import { GetActivitiesByUserQuery } from '@/.output/graphql/graphql'
 /*-------------------------------------
   Common
 -------------------------------------*/
-export type Book = {
-  id: string
-  title: string
-  authors: string[]
-  summary: string
-  coverUrl: string
-}
-
 export type AuthorName = {
   firstName: string
   lastName: string
+}
+
+export type Book = {
+  id: string
+  title: string
+  authors: AuthorName[]
+  summary: string
+  coverUrl: string
 }
 
 /*-------------------------------------

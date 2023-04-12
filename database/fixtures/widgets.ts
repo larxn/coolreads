@@ -1,7 +1,12 @@
 export const featuredBook = {
   id: '5',
   title: 'The Catcher in the Rye ',
-  authors: ['J.D. Salinger'],
+  authors: [
+    {
+      firstName: 'J. D.',
+      lastName: 'Salinger',
+    },
+  ],
   coverUrl:
     'https://firebasestorage.googleapis.com/v0/b/fictolab.appspot.com/o/coolreads%2Fcovers%2Ftcitr.webp?alt=media',
   summary:
