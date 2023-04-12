@@ -1,11 +1,6 @@
 <script setup lang="ts">
 import { getFormattedAuthorName } from '@/lib/utils/format'
-import { GetActivitiesByUserQuery } from '@/.output/graphql/graphql'
-
-type Review = Exclude<
-  GetActivitiesByUserQuery['activities'][number]['review'],
-  null | undefined
->
+import { Review } from '@/lib/models/content'
 
 const props = defineProps({
   user: {

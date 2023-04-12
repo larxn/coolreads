@@ -1,4 +1,4 @@
-import { User } from './user'
+import { GetActivitiesByUserQuery } from '@/.output/graphql/graphql'
 
 /*-------------------------------------
   Common
@@ -16,37 +16,22 @@ export type AuthorName = {
   lastName: string
 }
 
-type ActivityMeta = {
-  publishedAt: string
-  comments: string[]
-  likes: number
-}
-
 /*-------------------------------------
   Content Types
 -------------------------------------*/
-export type List = {
-  user: User
-  books: Omit<Book, 'summary'>[]
-  name: string
-  meta: ActivityMeta
-}
+export type BookList = Exclude<
+  GetActivitiesByUserQuery['activities'][number]['bookList'],
+  null | undefined
+>
 
-export type Quote = {
-  user: User
-  book: Omit<Book, 'coverUrl' | 'summary'>
-  quote: string
-  meta: ActivityMeta
-}
+export type Quote = Exclude<
+  GetActivitiesByUserQuery['activities'][number]['quote'],
+  null | undefined
+>
 
-export type Review = {
-  user: User
-  book: Omit<Book, 'summary'>
-  review: {
-    rating: number
-    comment: string
-  }
-  meta: ActivityMeta
-}
+export type Review = Exclude<
+  GetActivitiesByUserQuery['activities'][number]['review'],
+  null | undefined
+>
 
 export type ActivityType = 'review' | 'quote' | 'bookList'

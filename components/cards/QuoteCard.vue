@@ -1,10 +1,5 @@
 <script setup lang="ts">
-import { GetActivitiesByUserQuery } from '@/.output/graphql/graphql'
-
-type Quote = Exclude<
-  GetActivitiesByUserQuery['activities'][number]['quote'],
-  null | undefined
->
+import { Quote } from '@/lib/models/content'
 
 const props = defineProps({
   user: {
