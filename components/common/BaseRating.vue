@@ -10,6 +10,6 @@ defineProps({
 <template>
   <p class="flex items-center gap-x-0.5">
     <StarIcon class="text-yellow" />
-    <span>{{ value }}</span>
+    <span>{{ value.toFixed(1) }}</span>
   </p>
 </template>
