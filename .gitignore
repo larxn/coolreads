@@ -152,3 +152,7 @@ dist
 .nuxt
 .nitro
 .output
+
+# Personal
+Notes.md
+Notes.excalidraw

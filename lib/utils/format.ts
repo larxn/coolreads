@@ -35,7 +35,7 @@ export function getFormattedElapsedTime(timestamp: number | string) {
     output = `${Math.floor(difference / 86400)}d`
   } else if (difference < 31449600) {
     // Less than a year has passed:
-    output = `${Math.floor(difference / 2620800)}m`
+    output = `${Math.floor(difference / 2620800)}mo`
   } else {
     // More than a year has passed:
     output = `${Math.floor(difference / 31449600)}y`
