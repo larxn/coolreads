@@ -156,3 +156,6 @@ dist
 # Personal
 Notes.md
 Notes.excalidraw
+
+# GraphQL Codegen output
+.gen

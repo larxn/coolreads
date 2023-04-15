@@ -1,8 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-import {
-  QueryActivitiesArgs,
-  QueryActivityStatsArgs,
-} from '@/.output/graphql/graphql'
+import { QueryActivitiesArgs, QueryActivityStatsArgs } from '@/.gen/graphql'
 
 const prisma = new PrismaClient()
 
@@ -30,7 +27,7 @@ export default {
 
     activities: async (
       _ctx: {},
-      { userId, take, activityType }: QueryActivitiesArgs,
+      { userId, take, skip, activityType }: QueryActivitiesArgs,
     ) => {
       const common = {
         user: true,
@@ -55,41 +52,57 @@ export default {
           }
         : {}
 
-      return prisma.activity.findMany({
-        orderBy: [
-          {
-            createdAt: 'desc',
-          },
-        ],
-        take,
-        where: {
-          userId,
-          ...activityTypeFilter,
-        },
-        include: {
-          review: {
-            include: {
-              ...common,
+      const [totalActivities, activities] = await Promise.all([
+        prisma.activity.count({ where: { userId } }),
+        prisma.activity.findMany({
+          orderBy: [
+            {
+              createdAt: 'desc',
             },
+          ],
+          skip: skip || 0,
+          take,
+          where: {
+            userId,
+            ...activityTypeFilter,
           },
-          quote: {
-            include: {
-              ...common,
-            },
-          },
-          bookList: {
-            include: {
-              user: true,
-              books: {
-                include: {
-                  authors: true,
-                },
+          include: {
+            review: {
+              include: {
+                ...common,
               },
-              socialMeta: common.socialMeta,
+            },
+            quote: {
+              include: {
+                ...common,
+              },
+            },
+            bookList: {
+              include: {
+                user: true,
+                books: {
+                  include: {
+                    authors: true,
+                  },
+                },
+                socialMeta: common.socialMeta,
+              },
             },
           },
+        }),
+      ])
+
+      const hasNextPage = totalActivities - (skip || 0) - activities.length > 0
+
+      return {
+        nodes: activities,
+        pageInfo: {
+          totalItems: await prisma.activity.count({
+            where: { userId },
+          }),
+          hasNextPage,
         },
-      })
+      }
     },
   },
 }

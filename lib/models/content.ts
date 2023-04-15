@@ -16,6 +16,8 @@ export type Book = {
   coverUrl: string
 }
 
+export type Activity = GetActivitiesByUserQuery['activities']['nodes'][number]
+
 /*-------------------------------------
   Content Types
 -------------------------------------*/

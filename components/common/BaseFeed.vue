@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { GetActivitiesByUserQuery } from '@/.output/graphql/graphql'
+import { DynamicScroller, DynamicScrollerItem } from 'vue-virtual-scroller'
+import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
+
+import { Activity } from '@/lib/models/content'
 import ReviewCard from '@/components/cards/ReviewCard.vue'
 import QuoteCard from '@/components/cards/QuoteCard.vue'
 import ListCard from '@/components/cards/ListCard.vue'
-
-type Activity = GetActivitiesByUserQuery['activities'][number]
 
 defineProps({
   activities: {
@@ -25,10 +26,20 @@ const getActivityType = (activity: Activity) => {
 </script>
 
 <template>
-  <component
-    :is="getActivityCard(activity)"
-    v-for="activity in activities"
-    :key="activity.id"
-    v-bind="getActivityType(activity)"
-  />
+  <DynamicScroller
+    :items="activities"
+    :min-item-size="260"
+    :prerender="5"
+    page-mode
+  >
+    <template v-slot="{ item, index, active }">
+      <DynamicScrollerItem :item="item" :active="active" :data-index="index">
+        <component
+          :is="getActivityCard(item)"
+          v-bind="getActivityType(item)"
+          class="pb-4"
+        />
+      </DynamicScrollerItem>
+    </template>
+  </DynamicScroller>
 </template>

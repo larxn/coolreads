@@ -1,96 +1,113 @@
-query getActivitiesByUser($userId: Int!, $take: Int!, $activityType: String) {
-  activities(userId: $userId, take: $take, activityType: $activityType) {
-    id
-    createdAt
-    review {
-      content
-      rating
-      user {
-        id
-        username
-        firstName
-        lastName
-        avatarUrl
-      }
-      book {
-        id
-        slug
-        coverUrl
-        title
-        authors {
-          id
-          firstName
-          lastName
-        }
-      }
-      socialMeta {
-        id
-        likes {
-          id
-        }
-        comments {
-          id
-        }
-      }
-      createdAt
+query getActivitiesByUser(
+  $userId: Int!
+  $take: Int!
+  $skip: Int
+  $activityType: String
+) {
+  activities(
+    userId: $userId
+    take: $take
+    skip: $skip
+    activityType: $activityType
+  ) {
+    pageInfo {
+      totalItems
+      hasNextPage
     }
 
-    quote {
-      content
-      user {
-        id
-        username
-        firstName
-        lastName
-        avatarUrl
-      }
-      book {
-        id
-        slug
-        coverUrl
-        title
-        authors {
+    nodes {
+      id
+      createdAt
+      review {
+        content
+        rating
+        user {
           id
+          username
           firstName
           lastName
+          avatarUrl
         }
-      }
-      socialMeta {
-        id
-        likes {
+        book {
           id
+          slug
+          coverUrl
+          title
+          authors {
+            id
+            firstName
+            lastName
+          }
         }
-        comments {
+        socialMeta {
           id
+          likes {
+            id
+          }
+          comments {
+            id
+          }
         }
+        createdAt
       }
-      createdAt
-    }
 
-    bookList {
-      name
-      user {
-        id
-        username
-        firstName
-        lastName
-        avatarUrl
-      }
-      books {
-        id
-        title
-        coverUrl
-      }
-      socialMeta {
-        id
-        likes {
+      quote {
+        content
+        user {
           id
+          username
+          firstName
+          lastName
+          avatarUrl
         }
-        comments {
+        book {
           id
+          slug
+          coverUrl
+          title
+          authors {
+            id
+            firstName
+            lastName
+          }
         }
+        socialMeta {
+          id
+          likes {
+            id
+          }
+          comments {
+            id
+          }
+        }
+        createdAt
       }
-      createdAt
+
+      bookList {
+        name
+        user {
+          id
+          username
+          firstName
+          lastName
+          avatarUrl
+        }
+        books {
+          id
+          title
+          coverUrl
+        }
+        socialMeta {
+          id
+          likes {
+            id
+          }
+          comments {
+            id
+          }
+        }
+        createdAt
+      }
     }
   }
 }

@@ -3,9 +3,9 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "concurrently \"nuxt dev\" \"graphql-codegen --watch\"",
-    "generate": "nuxt generate",
-    "predev": "graphql-codegen --config codegen.ts",
-    "prebuild": "graphql-codegen --config codegen.ts",
+    "generate": "graphql-codegen && nuxt generate",
+    "predev": "graphql-codegen",
+    "prebuild": "graphql-codegen",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "prepare": "husky install"
@@ -22,13 +22,17 @@
     "@commitlint/cli": "^17.4.4",
     "@commitlint/config-conventional": "^17.4.4",
     "@graphql-codegen/cli": "^3.3.0",
-    "@graphql-codegen/client-preset": "^3.0.0",
+    "@graphql-codegen/typescript": "^3.0.3",
+    "@graphql-codegen/typescript-graphql-request": "^4.5.9",
+    "@graphql-codegen/typescript-operations": "^3.0.3",
     "@nuxtjs/apollo": "^5.0.0-alpha.6",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@rushstack/eslint-patch": "^1.2.0",
     "@types/lodash": "^4.14.192",
     "@vue/eslint-config-prettier": "^7.1.0",
     "@vue/eslint-config-typescript": "^11.0.2",
+    "@vueuse/core": "^9.13.0",
+    "@vueuse/nuxt": "^9.13.0",
     "autoprefixer": "^10.4.14",
     "concurrently": "^8.0.1",
     "eslint": "^8.36.0",
@@ -36,7 +40,7 @@
     "eslint-plugin-vue": "^9.9.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
-    "nuxt": "^3.4.0",
+    "nuxt": "^3.4.1",
     "postcss": "^8.4.21",
     "postcss-html": "^1.5.0",
     "prettier": "^2.8.4",
@@ -55,6 +59,7 @@
     "graphql": "^16.6.0",
     "lodash": "^4.17.21",
     "nuxt-graphql-server": "^1.2.2",
+    "vue-virtual-scroller": "^2.0.0-beta.8",
     "vue3-popper": "^1.5.0"
   }
 }

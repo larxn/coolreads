@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     dirs: ['lib/composables'],
   },
 
-  modules: ['@nuxtjs/apollo', 'nuxt-graphql-server'],
+  modules: ['@nuxtjs/apollo', 'nuxt-graphql-server', '@vueuse/nuxt'],
 
   css: ['@/assets/css/main.css'],
 
@@ -24,6 +24,12 @@ export default defineNuxtConfig({
       default: {
         httpEndpoint: `${process.env.BASE_URL}/api/graphql`,
       },
+    },
+  },
+
+  runtimeConfig: {
+    public: {
+      baseUrl: process.env.BASE_URL,
     },
   },
 

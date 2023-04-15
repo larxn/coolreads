@@ -1,50 +1,66 @@
 <script setup lang="ts">
-import getActivitiesByUser from '@/database/graphql/operations/activities-by-user.gql'
-import getActivitiesStatsByUser from '@/database/graphql/operations/activity-stats-by-user.gql'
 import { featuredBook } from '@/database/fixtures/widgets'
-import { ActivityType } from '@/lib/models/content'
-import {
-  GetActivitiesByUserQuery,
-  GetActivityStatsByUserQuery,
-} from '@/.output/graphql/graphql'
+import { Activity, ActivityType } from '@/lib/models/content'
 
 definePageMeta({
   title: 'Haylee Caulfield',
 })
 
-const activities = ref()
+const ITEMS_PER_PAGE = 5
+const hasNextPage = ref(true)
+const skip = ref(0)
+const feedLoader = ref()
+
+const activities = ref<Activity[]>([])
 const activityStats = ref()
 const feedLoading = ref(true)
 const statsLoading = ref(true)
 
 const fetchStats = async () => {
   statsLoading.value = true
-  const { data } = await useAsyncQuery<GetActivityStatsByUserQuery>(
-    getActivitiesStatsByUser,
-    {
+  const { data } = await useAsyncData('stats', () =>
+    useGraphQL().getActivityStatsByUser({
       userId: 1,
-    },
+    }),
   )
   activityStats.value = data.value?.activityStats
   statsLoading.value = false
 }
 
 const fetchFeed = async (activityType?: ActivityType) => {
+  if (!hasNextPage.value) return
+
   feedLoading.value = true
-  const { data } = await useAsyncQuery<GetActivitiesByUserQuery>(
-    getActivitiesByUser,
-    {
+
+  const { data } = await useAsyncData('feed', () =>
+    useGraphQL().getActivitiesByUser({
       userId: 1,
-      take: 5,
+      take: ITEMS_PER_PAGE,
+      skip: skip.value,
       activityType,
-    },
+    }),
   )
-  activities.value = data.value?.activities
+
+  if (data.value?.activities.nodes)
+    activities.value = [...activities.value, ...data.value.activities.nodes]
+
+  hasNextPage.value = !!data.value?.activities.pageInfo.hasNextPage
+  skip.value += ITEMS_PER_PAGE
+
   feedLoading.value = false
 }
 
-await fetchFeed()
-await fetchStats()
+onMounted(() =>
+  useIntersectionObserver(
+    feedLoader,
+    ([{ isIntersecting }]) => isIntersecting && fetchFeed(),
+    {
+      rootMargin: '20px',
+    },
+  ),
+)
+
+await Promise.all([fetchStats(), fetchFeed()])
 </script>
 
 <template>
@@ -62,8 +78,14 @@ await fetchStats()
       />
 
       <section class="flex flex-col gap-y-4">
-        <div v-if="feedLoading">Loading...</div>
-        <BaseFeed v-else :activities="activities" />
+        <BaseFeed :activities="activities" />
+        <ClientOnly>
+          <div v-if="hasNextPage" class="relative mx-auto">
+            <div ref="feedLoader" class="absolute flex justify-center">
+              <LoadingIcon v-if="feedLoading" />
+            </div>
+          </div>
+        </ClientOnly>
       </section>
     </main>
 

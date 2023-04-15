@@ -119,11 +119,24 @@ type ReviewChallenge {
   endDate: String!
 }
 
+# -------------------------------------
+# API
+# -------------------------------------
 type ActivityStats {
   user: User!
   reviews: Int!
   quotes: Int!
   bookLists: Int!
+}
+
+type PageInfo {
+  totalItems: Int!
+  hasNextPage: Boolean!
+}
+
+type ActivityFeed {
+  nodes: [Activity!]!
+  pageInfo: PageInfo!
 }
 
 # -------------------------------------
@@ -138,6 +151,6 @@ type Query {
     skip: Int
     take: Int!
     activityType: String
-  ): [Activity!]!
+  ): ActivityFeed!
   activityStats(userId: Int!): ActivityStats!
 }
