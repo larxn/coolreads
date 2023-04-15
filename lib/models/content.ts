@@ -1,4 +1,4 @@
-import { GetActivitiesByUserQuery } from '@/.output/graphql/graphql'
+import { GetActivitiesByUserQuery } from '@/.gen/graphql'
 
 /*-------------------------------------
   Common
@@ -21,19 +21,10 @@ export type Activity = GetActivitiesByUserQuery['activities']['nodes'][number]
 /*-------------------------------------
   Content Types
 -------------------------------------*/
-export type BookList = Exclude<
-  GetActivitiesByUserQuery['activities'][number]['bookList'],
-  null | undefined
->
+export type BookList = Exclude<Activity['bookList'], null | undefined>
 
-export type Quote = Exclude<
-  GetActivitiesByUserQuery['activities'][number]['quote'],
-  null | undefined
->
+export type Quote = Exclude<Activity['quote'], null | undefined>
 
-export type Review = Exclude<
-  GetActivitiesByUserQuery['activities'][number]['review'],
-  null | undefined
->
+export type Review = Exclude<Activity['review'], null | undefined>
 
 export type ActivityType = 'review' | 'quote' | 'bookList'
