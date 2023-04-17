@@ -8,7 +8,7 @@ useHead({
 
 <template>
   <div>
-    <TheNavigation class="hidden md:block" />
+    <TheNavigation class="sticky top-0 z-20 hidden md:block" />
     <MobileNavigation class="block md:hidden" />
 
     <slot />
