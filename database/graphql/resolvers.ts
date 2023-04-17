@@ -52,8 +52,13 @@ export default {
           }
         : {}
 
+      const where = {
+        userId,
+        ...activityTypeFilter,
+      }
+
       const [totalActivities, activities] = await Promise.all([
-        prisma.activity.count({ where: { userId } }),
+        prisma.activity.count({ where }),
         prisma.activity.findMany({
           orderBy: [
             {
@@ -62,10 +67,7 @@ export default {
           ],
           skip: skip || 0,
           take,
-          where: {
-            userId,
-            ...activityTypeFilter,
-          },
+          where,
           include: {
             review: {
               include: {

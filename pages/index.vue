@@ -8,6 +8,7 @@ definePageMeta({
 
 const ITEMS_PER_PAGE = 5
 const hasNextPage = ref(true)
+const feedType = ref<ActivityType | undefined>(undefined)
 const skip = ref(0)
 const feedLoader = ref()
 
@@ -27,7 +28,19 @@ const fetchStats = async () => {
   statsLoading.value = false
 }
 
+const setFeedType = (activityType?: ActivityType) => {
+  feedType.value = activityType
+  skip.value = 0
+  hasNextPage.value = true
+  activities.value = []
+}
+
 const fetchFeed = async (activityType?: ActivityType) => {
+  if (feedType.value !== activityType) {
+    setFeedType(activityType)
+    return
+  }
+
   if (!hasNextPage.value) return
 
   feedLoading.value = true
@@ -53,7 +66,11 @@ const fetchFeed = async (activityType?: ActivityType) => {
 onMounted(() =>
   useIntersectionObserver(
     feedLoader,
-    ([{ isIntersecting }]) => isIntersecting && fetchFeed(),
+    ([{ isIntersecting }]) => {
+      if (isIntersecting) {
+        fetchFeed(feedType.value)
+      }
+    },
     {
       rootMargin: '20px',
     },
