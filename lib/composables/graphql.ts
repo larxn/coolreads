@@ -7,7 +7,7 @@ export function useGraphQL() {
   const $config = useRuntimeConfig()
 
   if (!client) {
-    client = new GraphQLClient(`${$config.public.baseUrl}/api/graphql`)
+    client = new GraphQLClient(`${$config.public.graphqlBaseUrl}/api/graphql`)
   }
   return getSdk(client)
 }

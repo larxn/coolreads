@@ -30,6 +30,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       baseUrl: process.env.BASE_URL,
+      graphqlBaseUrl: process.env.GRAPHQL_BASE_URL || process.env.BASE_URL,
     },
   },
 
