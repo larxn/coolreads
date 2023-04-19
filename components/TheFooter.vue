@@ -1,5 +1,5 @@
 <template>
-  <footer class="mt-5 border-t-4 border-gray-600 pt-5 text-center">
+  <footer class="mt-5 border-t-4 border-gray-600 pb-12 pt-5 text-center">
     <p class="text-gray-100">
       Avatars adapted from
       <a

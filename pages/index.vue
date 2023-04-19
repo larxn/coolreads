@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import type { Activity, ActivityType } from '@/lib/models/content'
 import { featuredBook } from '@/database/fixtures/widgets'
-import { Activity, ActivityType } from '@/lib/models/content'
 
 definePageMeta({
   title: 'Haylee Caulfield',
@@ -84,7 +84,7 @@ await Promise.all([fetchStats(), fetchFeed()])
   <div
     class="mx-auto mt-9 max-w-content-container grid-cols-main gap-x-10 px-5 md:grid"
   >
-    <main class="pb-11">
+    <main class="pb-8">
       <ProfileHeader />
       <ActivityTabs
         v-if="!statsLoading && activityStats"
@@ -106,7 +106,7 @@ await Promise.all([fetchStats(), fetchFeed()])
       </section>
     </main>
 
-    <div class="hidden md:block">
+    <ScrollableStickySidebar class="hidden md:block">
       <aside class="flex flex-col gap-y-10">
         <LeaderBoardWidget />
         <FeaturedBookWidget
@@ -117,6 +117,6 @@ await Promise.all([fetchStats(), fetchFeed()])
       </aside>
 
       <TheFooter />
-    </div>
+    </ScrollableStickySidebar>
   </div>
 </template>
