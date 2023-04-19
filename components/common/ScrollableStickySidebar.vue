@@ -19,36 +19,39 @@ const setOffset = () => {
   }
 }
 
+const initialize = () => {
+  if (sidebarContainer.value && sidebar.value) {
+    containerOffset.value =
+      sidebarContainer.value.getBoundingClientRect().top + window.scrollY
+
+    stickyTop.value =
+      window.innerHeight -
+      sidebar.value.getBoundingClientRect().height -
+      containerOffset.value
+
+    stickyBottom.value =
+      window.innerHeight - sidebar.value.getBoundingClientRect().height
+
+    sidebarPosition.value = {
+      bottom: `${stickyTop.value}px`,
+      top: `${stickyBottom.value}px`,
+    }
+  }
+}
+
 onMounted(() => {
   /* 
     We wait for the next DOM rendering so that
     getBoundingClientRect() includes paddings
     in its calculations.
   */
-  nextTick(() => {
-    if (sidebarContainer.value && sidebar.value) {
-      containerOffset.value =
-        sidebarContainer.value.getBoundingClientRect().top + window.scrollY
+  nextTick(initialize)
 
-      stickyTop.value =
-        window.innerHeight -
-        sidebar.value.getBoundingClientRect().height -
-        containerOffset.value
-
-      stickyBottom.value =
-        window.innerHeight - sidebar.value.getBoundingClientRect().height
-
-      sidebarPosition.value = {
-        bottom: `${stickyTop.value}px`,
-        top: `${stickyBottom.value}px`,
-      }
-    }
-
-    const { directions } = useScroll(window)
-
-    watch(() => directions.top, setOffset)
-  })
+  const { directions } = useScroll(window)
+  watch(() => directions.top, setOffset)
 })
+
+onWindowResize(initialize)
 </script>
 
 <template>
