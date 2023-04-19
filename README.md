@@ -10,22 +10,39 @@ The **goals** are to:
 
 Still at a very early stage, but you can already check the UI [design](https://www.figma.com/proto/sEZV7Vs1vYPhugnXePQoAA/CoolReads?node-id=807%3A440&scaling=min-zoom&page-id=807%3A89&starting-point-node-id=807%3A440&hide-ui=1); or you can follow the project's [board](https://trello.com/b/qAuxHdOE/coolreads), if you feel like it.
 
-## 📚 Installation
+## 📚 Dev Setup
 
 ```bash
 # Download the repo.
 git clone https://github.com/luvejo/coolreads.git
+
+# Run your development database.
+npx pscale connect coolreads main --port 3309
+
+# And then the development server.
+yarn dev
+```
+
+To quickly CRUD your data, I recommend you to use Prisma Studio:
+
+```bash
+npx prisma studio
 ```
 
 ## 📚 Build Setup
 
 ```bash
+# Download the repo.
+git clone https://github.com/luvejo/coolreads.git
+
 # Install dependencies and build project.
-$ yarn && yarn build
+$ yarn && yarn generate
 
 # Serve.
 $ yarn preview
 ```
+
+You should see the project running at [localhost:3000](http://localhost:3000).
 
 ## 📚 License
 
