@@ -66,7 +66,7 @@ onMounted(() => {
 }
 
 .open .text {
-  line-clamp: initial;
-  -webkit-line-clamp: initial;
+  line-clamp: unset;
+  -webkit-line-clamp: unset;
 }
 </style>
