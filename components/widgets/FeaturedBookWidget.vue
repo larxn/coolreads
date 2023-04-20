@@ -31,8 +31,7 @@ defineProps({
           By {{ getFormattedAuthors(book.authors) }}
         </p>
 
-        <div class="mt-4 line-clamp-4 leading-5">{{ book.summary }}</div>
-        <a class="underline" href="#"> read more </a>
+        <div class="mt-4 line-clamp-[9] leading-5">{{ book.summary }}</div>
       </div>
     </section>
   </section>

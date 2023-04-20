@@ -66,8 +66,7 @@ const firstAuthor = computed(() => props.book.authors[0])
           </div>
 
           <div>
-            <div class="line-clamp-5 leading-5">{{ content }}</div>
-            <a class="underline" href="#"> read more </a>
+            <ClampedText class="leading-5">{{ content }}</ClampedText>
 
             <div class="text-right">
               <p>
