@@ -93,9 +93,11 @@ const authors = computed(() =>
                 </div>
               </div>
             </div>
-            <ClampedText v-if="content" class="mt-2 leading-5">
-              {{ content }}
-            </ClampedText>
+            <TruncatedText
+              v-if="content"
+              class="my-2 leading-5"
+              :text="content"
+            />
           </div>
         </section>
 

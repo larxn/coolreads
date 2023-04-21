@@ -65,8 +65,8 @@ const firstAuthor = computed(() => props.book.authors[0])
             <QuoteIcon class="mt-1.5 h-fit w-full text-gray-600" />
           </div>
 
-          <div>
-            <ClampedText class="leading-5">{{ content }}</ClampedText>
+          <div class="mb-2">
+            <TruncatedText class="mb-2 leading-5" :text="content" />
 
             <div class="text-right">
               <p>

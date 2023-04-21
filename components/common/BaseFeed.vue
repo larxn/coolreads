@@ -33,7 +33,12 @@ const getActivityType = (activity: Activity) => {
     page-mode
   >
     <template v-slot="{ item, index, active }">
-      <DynamicScrollerItem :item="item" :active="active" :data-index="index">
+      <DynamicScrollerItem
+        :item="item"
+        :active="active"
+        :data-index="index"
+        :size-dependencies="[item.content]"
+      >
         <component
           :is="getActivityCard(item)"
           v-bind="getActivityType(item)"
