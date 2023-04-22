@@ -86,6 +86,15 @@ Some recommended VS Code extensions are:
 
 - [Pretty TypeScript Errors](https://marketplace.visualstudio.com/items?itemName=yoavbls.pretty-ts-errors), for much more readable TypeScript errors.
 
+## Contributing
+
+From the official Vue Style Guide, this project follows these conventions:
+
+- [Base component names](https://vuejs.org/style-guide/rules-strongly-recommended.html#base-component-names)
+- [Single-instance component names](https://vuejs.org/style-guide/rules-strongly-recommended.html#single-instance-component-names)
+- [Self-closing components](https://vuejs.org/style-guide/rules-strongly-recommended.html#self-closing-components)
+- [Full-word component names](https://vuejs.org/style-guide/rules-strongly-recommended.html#full-word-component-names)
+
 ## 📚 License
 
 This project is licensed under the MIT License.
