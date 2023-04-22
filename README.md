@@ -12,37 +12,79 @@ Still at a very early stage, but you can already check the UI [design](https://w
 
 ## 📚 Dev Setup
 
+Download the repository.
+
 ```bash
-# Download the repo.
 git clone https://github.com/luvejo/coolreads.git
+```
 
-# Run your development database.
+Create a `.env` file.
+
+```bash
+cp .env.example .env.
+```
+
+Run your development database.
+
+```bash
 npx pscale connect coolreads main --port 3309
+```
 
-# And then the development server.
+And then the development server.
+
+```bash
 yarn dev
 ```
 
-To quickly CRUD your data, I recommend you to use Prisma Studio:
+You should see the project running at [localhost:3000](http://localhost:3000).
+
+## 📚 Build Setup
+
+Download the repository.
+
+```bash
+git clone https://github.com/luvejo/coolreads.git
+```
+
+Create a `.env` file. For the build setup, you can just leave this file's default values.
+
+```bash
+cp .env.example .env
+```
+
+Install dependencies and build project.
+
+```bash
+yarn && yarn generate
+```
+
+Preview the production build.
+
+```bash
+yarn preview
+```
+
+You should see the project running at [localhost:3000](http://localhost:3000).
+
+## 📚 Dev Tips
+
+To quickly CRUD your data, I recommend you to use [Prisma Studio](https://www.prisma.io/studio):
 
 ```bash
 npx prisma studio
 ```
 
-## 📚 Build Setup
+Some recommended VS Code extensions are:
 
-```bash
-# Download the repo.
-git clone https://github.com/luvejo/coolreads.git
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), for automatic code formatting.
 
-# Install dependencies and build project.
-$ yarn && yarn generate
+- [ENV](https://marketplace.visualstudio.com/items?itemName=IronGeek.vscode-env), which adds syntax highlighting support for env files.
 
-# Serve.
-$ yarn preview
-```
+- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker).
 
-You should see the project running at [localhost:3000](http://localhost:3000).
+- [Prisma](https://marketplace.visualstudio.com/items?itemName=Prisma.prisma), for .prisma files syntax highlighting.
+
+- [Pretty TypeScript Errors](https://marketplace.visualstudio.com/items?itemName=yoavbls.pretty-ts-errors), for much more readable TypeScript errors.
 
 ## 📚 License
 
