@@ -19,9 +19,11 @@ const { notifications, onMarkAsRead } = useNotifications()
           <NotificationButton :notifications="notifications" />
         </NotificationPopover>
 
-        <button class="flex h-7 w-7 items-center justify-center">
-          <MenuIcon />
-        </button>
+        <BaseTooltip message="Wanna have a drink with me instead?">
+          <button class="flex h-7 w-7 items-center justify-center">
+            <MenuIcon />
+          </button>
+        </BaseTooltip>
       </div>
     </div>
   </section>
