@@ -23,9 +23,7 @@ defineProps({
         View {{ comments }} comment{{ comments > 1 ? 's' : '' }}
       </a>
 
-      <div class="hidden md:block">
-        <BaseButton variant="tertiary">Reply</BaseButton>
-      </div>
+      <BaseButton variant="tertiary">Reply</BaseButton>
     </div>
   </section>
 </template>

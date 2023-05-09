@@ -61,5 +61,5 @@ body::-webkit-scrollbar-track {
 }
 
 .tertiary-btn {
-  @apply border-2 border-white;
+  @apply border-2 border-white/25;
 }
