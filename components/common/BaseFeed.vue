@@ -30,6 +30,7 @@ const getActivityType = (activity: Activity) => {
     :items="activities"
     :min-item-size="260"
     :prerender="5"
+    :buffer="600"
     page-mode
   >
     <template v-slot="{ item, index, active }">
