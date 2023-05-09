@@ -95,14 +95,17 @@ await Promise.all([fetchStats(), fetchFeed()])
       />
 
       <section class="flex flex-col gap-y-4">
-        <BaseFeed :activities="activities" />
-        <ClientOnly>
-          <div v-if="hasNextPage" class="relative mx-auto">
-            <div ref="feedLoader" class="absolute flex justify-center">
+        <BaseFeed :activities="activities">
+          <ClientOnly>
+            <div
+              v-if="hasNextPage"
+              ref="feedLoader"
+              class="mx-auto flex justify-center"
+            >
               <LoadingIcon v-if="feedLoading" />
             </div>
-          </div>
-        </ClientOnly>
+          </ClientOnly>
+        </BaseFeed>
       </section>
     </main>
 

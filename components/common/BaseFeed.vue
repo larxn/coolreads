@@ -47,5 +47,9 @@ const getActivityType = (activity: Activity) => {
         />
       </DynamicScrollerItem>
     </template>
+
+    <template #after>
+      <slot />
+    </template>
   </DynamicScroller>
 </template>
