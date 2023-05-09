@@ -30,12 +30,15 @@ export function getFormattedElapsedTime(timestamp: number | string) {
   } else if (difference < 86400) {
     // Less than a day has passed:
     output = `${Math.floor(difference / 3600)}h`
-  } else if (difference < 2620800) {
-    // Less than a month has passed:
+  } else if (difference < 604800) {
+    // Less than a week has passed:
     output = `${Math.floor(difference / 86400)}d`
+  } else if (difference < 2419200) {
+    // Less than a month has passed:
+    output = `${Math.floor(difference / 604800)}w`
   } else if (difference < 31449600) {
     // Less than a year has passed:
-    output = `${Math.floor(difference / 2620800)}mo`
+    output = `${Math.floor(difference / 2419200)}mo`
   } else {
     // More than a year has passed:
     output = `${Math.floor(difference / 31449600)}y`
