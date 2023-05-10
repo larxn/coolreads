@@ -1,4 +1,4 @@
-<img width="1117" alt="Frame 128 (2)" src="https://github.com/luvejo/coolreads/assets/16514302/c91c55d7-78a8-4f94-b551-d2b4c20bf3b6">
+<img width="1117" alt="Frame 128 (7)" src="https://github.com/luvejo/coolreads/assets/16514302/febb7973-df99-4958-b99e-7aa91c4928e4">
 
 ## 🟣 Intro 
 
