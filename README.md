@@ -1,4 +1,6 @@
-# CoolReads 📚
+<img width="1117" alt="Frame 128 (2)" src="https://github.com/luvejo/coolreads/assets/16514302/c91c55d7-78a8-4f94-b551-d2b4c20bf3b6">
+
+## 🟣 Intro 
 
 Remake of [goodreads.com](https://goodreads.com/), a site where you can share your reader's journey (via **quotes**, **lists**, **reviews** and more), meet other bookworms and find those books that will change everything.
 
@@ -10,7 +12,7 @@ The **goals** are to:
 
 Still at a very early stage, but you can already check the UI [design](https://www.figma.com/proto/sEZV7Vs1vYPhugnXePQoAA/CoolReads?node-id=807%3A440&scaling=min-zoom&page-id=807%3A89&starting-point-node-id=807%3A440&hide-ui=1); or you can follow the project's [board](https://trello.com/b/qAuxHdOE/coolreads), if you feel like it.
 
-## 📚 Dev Setup
+## 🟣 Dev Setup
 
 Download the repository.
 
@@ -38,7 +40,7 @@ yarn dev
 
 You should see the project running at [localhost:3000](http://localhost:3000).
 
-## 📚 Build Setup
+## 🟣 Build Setup
 
 Download the repository.
 
@@ -66,7 +68,7 @@ yarn preview
 
 You should see the project running at [localhost:3000](http://localhost:3000).
 
-## 📚 Dev Tips
+## 🟣 Dev Tips
 
 To quickly CRUD your data, I recommend you to use [Prisma Studio](https://www.prisma.io/studio):
 
@@ -86,7 +88,7 @@ Some recommended VS Code extensions are:
 
 - [Pretty TypeScript Errors](https://marketplace.visualstudio.com/items?itemName=yoavbls.pretty-ts-errors), for much more readable TypeScript errors.
 
-## 📚 Contributing
+## 🟣 Contributing
 
 From the official Vue Style Guide, we put special attention to these conventions:
 
@@ -96,6 +98,6 @@ From the official Vue Style Guide, we put special attention to these conventions
 - [Full-word component names](https://vuejs.org/style-guide/rules-strongly-recommended.html#full-word-component-names)
 - [Simple expressions in templates](https://vuejs.org/style-guide/rules-strongly-recommended.html#simple-expressions-in-templates)
 
-## 📚 License
+## 🟣 License
 
 This project is licensed under the MIT License.
