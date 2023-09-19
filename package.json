@@ -56,6 +56,7 @@
     "@apollo/server": "^4.5.0",
     "@as-integrations/h3": "^1.1.5",
     "@prisma/client": "^4.12.0",
+    "@vercel/analytics": "^1.0.2",
     "graphql": "^16.6.0",
     "lodash": "^4.17.21",
     "nuxt-graphql-server": "^1.2.2",
