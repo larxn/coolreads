@@ -1,6 +1,6 @@
-<img width="1117" alt="Frame 128 (7)" src="https://github.com/luvejo/coolreads/assets/16514302/febb7973-df99-4958-b99e-7aa91c4928e4">
+<img width="1117" alt="Frame 128 (7)" src="https://github.com/luveqz/coolreads/assets/16514302/febb7973-df99-4958-b99e-7aa91c4928e4">
 
-## 🟣 Intro 
+## 🟣 Intro
 
 Remake of [goodreads.com](https://goodreads.com/), a site where you can share your reader's journey (via **quotes**, **lists**, **reviews** and more), meet other bookworms and find those books that will change everything.
 
@@ -17,7 +17,7 @@ Still at a very early stage, but you can already check the UI [design](https://w
 Download the repository.
 
 ```bash
-git clone https://github.com/luvejo/coolreads.git
+git clone https://github.com/luveqz/coolreads.git
 ```
 
 Create a `.env` file.
@@ -45,7 +45,7 @@ You should see the project running at [localhost:3000](http://localhost:3000).
 Download the repository.
 
 ```bash
-git clone https://github.com/luvejo/coolreads.git
+git clone https://github.com/luveqz/coolreads.git
 ```
 
 Create a `.env` file. For the build setup, you can just leave this file's default values.

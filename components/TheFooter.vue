@@ -40,7 +40,7 @@
             A project by
             <a
               class="font-semibold text-gray-600"
-              href="https://github.com/luvejo"
+              href="https://github.com/luveqz"
               target="_blank"
               rel="noreferrer"
             >
