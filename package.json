@@ -45,22 +45,23 @@
     "postcss-html": "^1.5.0",
     "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.2.4",
-    "prisma": "^4.12.0",
     "stylelint": "^15.2.0",
     "stylelint-config-recommended-vue": "^1.4.0",
     "stylelint-config-standard": "^30.0.1",
     "tailwindcss": "^3.2.7",
-    "typescript": "^5.0.3"
+    "typescript": "^5.5.4"
   },
   "dependencies": {
     "@apollo/server": "^4.5.0",
     "@as-integrations/h3": "^1.1.5",
-    "@prisma/client": "^4.12.0",
+    "@prisma/client": "^5.18.0",
     "@vercel/analytics": "^1.0.2",
     "graphql": "^16.6.0",
     "lodash": "^4.17.21",
     "nuxt-graphql-server": "^1.2.2",
+    "prisma": "^5.18.0",
     "vue-virtual-scroller": "^2.0.0-beta.8",
     "vue3-popper": "^1.5.0"
-  }
+  },
+  "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
 }
