@@ -13,7 +13,7 @@ const { searchBooks } = useBookSearch(results)
     <div
       class="mx-auto flex w-full max-w-content-container items-center justify-between px-5"
     >
-      <BaseTooltip message="This guy traded 3 neurons for this name.">
+      <BaseTooltip message="This dev traded 3 neurons for this name.">
         <LogoIcon />
       </BaseTooltip>
 
