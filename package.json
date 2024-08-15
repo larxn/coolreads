@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "build": "nuxt build",
+    "build": "prisma generate && nuxt build",
     "dev": "concurrently \"nuxt dev\" \"graphql-codegen --watch\"",
     "generate": "graphql-codegen && nuxt generate",
     "predev": "graphql-codegen",
