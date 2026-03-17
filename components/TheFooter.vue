@@ -40,11 +40,11 @@
             A project by
             <a
               class="font-semibold text-gray-600"
-              href="https://github.com/luveqz"
+              href="https://github.com/larxn"
               target="_blank"
               rel="noreferrer"
             >
-              @luvejo</a
+              @larxn</a
             >.
           </p>
         </template>
