@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { leaderboard } from '@/database/fixtures/leaderboard'
+import { leaderboard } from '@/data/fixtures/leaderboard'
 </script>
 
 <template>
@@ -7,7 +7,7 @@ import { leaderboard } from '@/database/fixtures/leaderboard'
     <WidgetHeader title="20 Reviews Challenge" subtitle="Leaderboard" />
 
     <section class="my-4 flex flex-col gap-y-4 px-6">
-      <NuxtLink v-for="user in leaderboard" href="#" :key="user.id">
+      <NuxtLink v-for="user in leaderboard" :key="user.id" href="#">
         <article class="flex items-start gap-x-2.5">
           <BaseAvatar :src="user.avatarUrl" variant="medium" />
 

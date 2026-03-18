@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Notification } from '@/lib/models/user'
+import type { Notification } from '@/lib/models/user'
 
 defineProps({
   notifications: {

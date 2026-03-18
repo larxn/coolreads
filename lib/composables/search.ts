@@ -1,6 +1,6 @@
 import debounce from 'lodash/debounce'
-import { Book } from '@/lib/models/content'
-import { books } from '@/database/fixtures/books'
+import type { Book } from '@/lib/models/content'
+import { books } from '@/data/fixtures/books'
 
 export function useBookSearch(results: Ref<Book[]>) {
   return {
@@ -15,7 +15,11 @@ export function useBookSearch(results: Ref<Book[]>) {
       results.value = books.filter((book) => {
         return (
           book.title.toLowerCase().includes(query) ||
-          book.authors.some((author) => author.toLowerCase().includes(query))
+          book.authors.some((author) =>
+            `${author.firstName} ${author.lastName}`
+              .toLowerCase()
+              .includes(query),
+          )
         )
       })
     }, 500),

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Book } from '@/lib/models/content'
+import type { Book } from '@/lib/models/content'
 
 defineProps({
   results: {

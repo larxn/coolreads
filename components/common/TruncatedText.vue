@@ -1,15 +1,14 @@
 <template>
   <div>
-    <p>
-      {{ truncatedText && !isOpen ? truncatedText : text }}
-      <button
+    <p class="w-full text-wrap whitespace-pre font-[inherit]"
+      >{{ truncatedText && !isOpen ? truncatedText : text }}
+      <a
         v-if="truncatedText"
         class="text-gray-200 underline underline-offset-2"
         @click="isOpen = !isOpen"
-      >
-        See {{ isOpen ? 'less' : 'more' }}
-      </button>
-    </p>
+        >See {{ isOpen ? 'less' : 'more' }}
+      </a></p
+    >
   </div>
 </template>
 

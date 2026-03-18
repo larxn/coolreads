@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BookList } from '@/lib/models/content'
+import type { BookList } from '@/lib/models/content'
 
 type Book = Exclude<BookList['books'][number], null>
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Popper from 'vue3-popper'
-import { Notification } from '@/lib/models/user'
+import type { Notification } from '@/lib/models/user'
 
 defineProps({
   notifications: {
@@ -18,8 +18,8 @@ defineEmits(['mark-as-read'])
       arrow
       placement="top-end"
       arrow-padding="20"
-      offsetDistance="8"
-      offsetSkid="16"
+      offset-distance="8"
+      offset-skid="16"
       class="relative"
     >
       <div class="cursor-pointer">
@@ -35,12 +35,12 @@ defineEmits(['mark-as-read'])
           <section class="flex flex-col gap-3 rounded-b bg-gray-50 px-4 py-2">
             <NotificationItem
               v-for="notification in notifications"
-              :key="notification.id"
               :id="notification.id"
+              :key="notification.id"
               :subject="notification.subject"
               :predicate="notification.predicate"
               :timestamp="notification.timestamp"
-              :isRead="notification.isRead"
+              :is-read="notification.isRead"
               @click="$emit('mark-as-read', notification.id)"
             />
           </section>

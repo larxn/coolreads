@@ -1,7 +1,0 @@
-query getActivityStatsByUser($userId: Int!) {
-  activityStats(userId: $userId) {
-    reviews
-    quotes
-    bookLists
-  }
-}

@@ -49,10 +49,7 @@
           </p>
         </template>
       </BasePopover>
-
-      <BaseTooltip
-        message="Don't you have a life? Not that I don't need one too."
-      >
+      <BaseTooltip message="This is just a demo app">
         <NuxtLink class="underline" to="/"> Privacy </NuxtLink>
       </BaseTooltip>
 

@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import user from '@/database/fixtures/user'
-import { Book } from '@/lib/models/content'
+import { users } from '@/data/fixtures/user'
+import type { Book } from '@/lib/models/content'
 
 const { notifications, onMarkAsRead } = useNotifications()
 
+const user = users[0]
 const results = ref<Book[]>([])
 const { searchBooks } = useBookSearch(results)
 </script>

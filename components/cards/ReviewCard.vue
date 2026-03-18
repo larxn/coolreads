@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { getFormattedAuthorName } from '@/lib/utils/format'
-import { Review } from '@/lib/models/content'
+import type { Review } from '@/lib/models/content'
 
 const props = defineProps({
   user: {
@@ -22,6 +22,7 @@ const props = defineProps({
   socialMeta: {
     type: Object as PropType<Review['socialMeta']>,
     required: false,
+    default: null,
   },
   createdAt: {
     type: String as PropType<Review['createdAt']>,

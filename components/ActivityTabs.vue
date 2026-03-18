@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ActivityType } from '@/lib/models/content'
+import type { ActivityType } from '@/lib/models/content'
 
 defineProps({
   reviewCounter: {

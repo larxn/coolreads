@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Book } from '@/lib/models/content'
+import type { Book } from '@/lib/models/content'
 import { getFormattedAuthors } from '@/lib/utils/format'
 
 defineProps({
@@ -31,7 +31,7 @@ defineProps({
           By {{ getFormattedAuthors(book.authors) }}
         </p>
 
-        <div class="mt-4 line-clamp-[9] leading-5">{{ book.summary }}</div>
+        <div class="mt-4 line-clamp-[9] leading-5" v-html="book.description" />
       </div>
     </section>
   </section>

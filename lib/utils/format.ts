@@ -1,4 +1,4 @@
-import { AuthorName } from '@/lib/models/content'
+import type { AuthorName } from '@/lib/models/content'
 
 export function getFormattedAuthorName({ firstName, lastName }: AuthorName) {
   let name = ''
@@ -18,7 +18,7 @@ export function getFormattedAuthors(authors: AuthorName[]) {
 }
 
 export function getFormattedElapsedTime(timestamp: number | string) {
-  const difference = (Date.now() - Number(timestamp)) / 1000
+  const difference = (Date.now() - new Date(timestamp).getTime()) / 1000
 
   let output = ''
   if (difference < 60) {

@@ -1,11 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "build": "prisma generate && nuxt build",
-    "dev": "concurrently \"nuxt dev\" \"graphql-codegen --watch\"",
-    "generate": "graphql-codegen && nuxt generate",
-    "predev": "graphql-codegen",
-    "prebuild": "graphql-codegen",
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "prepare": "husky install"
@@ -15,17 +13,9 @@
     "*.{css,scss,sass,html,vue}": "stylelint",
     "*.**": "prettier --check --ignore-unknown"
   },
-  "prisma": {
-    "schema": "database/schema.prisma"
-  },
   "devDependencies": {
     "@commitlint/cli": "^17.4.4",
     "@commitlint/config-conventional": "^17.4.4",
-    "@graphql-codegen/cli": "^3.3.0",
-    "@graphql-codegen/typescript": "^3.0.3",
-    "@graphql-codegen/typescript-graphql-request": "^4.5.9",
-    "@graphql-codegen/typescript-operations": "^3.0.3",
-    "@nuxtjs/apollo": "^5.0.0-alpha.6",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@rushstack/eslint-patch": "^1.2.0",
     "@types/lodash": "^4.14.192",
@@ -34,8 +24,8 @@
     "@vueuse/core": "^9.13.0",
     "@vueuse/nuxt": "^9.13.0",
     "autoprefixer": "^10.4.14",
-    "concurrently": "^8.0.1",
     "eslint": "^8.36.0",
+    "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-vue": "^9.9.0",
     "husky": "^8.0.3",
@@ -46,21 +36,22 @@
     "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.2.4",
     "stylelint": "^15.2.0",
+    "stylelint-config-recommended": "^13.0.0",
     "stylelint-config-recommended-vue": "^1.4.0",
     "stylelint-config-standard": "^30.0.1",
     "tailwindcss": "^3.2.7",
     "typescript": "^5.5.4"
   },
+  "pnpm": {
+    "overrides": {
+      "@typescript-eslint/parser": "^6.21.0"
+    }
+  },
   "dependencies": {
-    "@apollo/server": "^4.5.0",
-    "@as-integrations/h3": "^1.1.5",
-    "@prisma/client": "^5.18.0",
+    "@tanstack/vue-query": "^5.92.10",
+    "@tanstack/vue-virtual": "^3.13.23",
     "@vercel/analytics": "^1.0.2",
-    "graphql": "^16.6.0",
     "lodash": "^4.17.21",
-    "nuxt-graphql-server": "^1.2.2",
-    "prisma": "^5.18.0",
-    "vue-virtual-scroller": "^2.0.0-beta.8",
     "vue3-popper": "^1.5.0"
   }
 }

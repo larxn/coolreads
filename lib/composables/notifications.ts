@@ -1,4 +1,4 @@
-import * as fixtures from '@/database/fixtures/notifications'
+import * as fixtures from '@/data/fixtures/notifications'
 
 let notificationInjected = false
 
@@ -16,9 +16,7 @@ export function useNotifications() {
   }
 
   const playAudio = () => {
-    const audio = new Audio(
-      'https://firebasestorage.googleapis.com/v0/b/fictolab.appspot.com/o/coolreads%2Fsounds%2Fnotification.mp3?alt=media',
-    )
+    const audio = new Audio('/audio/notification.mp3')
     audio.play()
   }
 

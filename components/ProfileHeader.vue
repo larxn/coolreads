@@ -1,6 +1,5 @@
 <script setup lang="ts">
-const avatarUrl =
-  'https://firebasestorage.googleapis.com/v0/b/fictolab.appspot.com/o/coolreads%2Fhaylee.webp?alt=media'
+const avatarUrl = '/img/users/haylee.webp'
 </script>
 
 <template>
@@ -15,7 +14,7 @@ const avatarUrl =
         <h1
           class="text-2xl font-semibold md:mb-0.5 md:text-3xl md:leading-none"
         >
-          Haylee Caulfield
+          Aurora Griffiths
         </h1>
         <p class="text-lg leading-5 text-gray-200">@goldenfish</p>
       </div>

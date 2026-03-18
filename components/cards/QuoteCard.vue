@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Quote } from '@/lib/models/content'
+import type { Quote } from '@/lib/models/content'
 
 const props = defineProps({
   user: {

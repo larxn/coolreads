@@ -23,7 +23,7 @@ git clone https://github.com/larxn/coolreads.git
 Create a `.env` file.
 
 ```bash
-cp .env.example .env.
+cp .env.example .env
 ```
 
 Run your development database.
