@@ -12,7 +12,17 @@ const containerOffset = ref(0)
 const offset = ref(0)
 const sidebarPosition = ref<CSSProperties>({})
 
+const isSidebarSmallerThanViewport = () => {
+  const sidebarHeight = sidebar.value?.getBoundingClientRect().height
+
+  if (sidebarHeight) {
+    return sidebarHeight <= window.innerHeight
+  }
+}
+
 const setOffset = () => {
+  if (isSidebarSmallerThanViewport()) return
+
   const top = topRef.value?.getBoundingClientRect().top
   if (top !== undefined) {
     offset.value = window.scrollY + top - containerOffset.value
@@ -24,13 +34,18 @@ const initialize = () => {
     containerOffset.value =
       sidebarContainer.value.getBoundingClientRect().top + window.scrollY
 
-    stickyTop.value =
-      window.innerHeight -
-      sidebar.value.getBoundingClientRect().height -
-      containerOffset.value
+    const sidebarHeight = sidebar.value.getBoundingClientRect().height
 
-    stickyBottom.value =
-      window.innerHeight - sidebar.value.getBoundingClientRect().height
+    if (isSidebarSmallerThanViewport()) {
+      sidebarPosition.value = {
+        top: `${containerOffset.value}px`,
+      }
+      return
+    }
+
+    stickyTop.value = window.innerHeight - sidebarHeight - containerOffset.value
+
+    stickyBottom.value = window.innerHeight - sidebarHeight
 
     sidebarPosition.value = {
       bottom: `${stickyTop.value}px`,
