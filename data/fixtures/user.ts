@@ -1,10 +1,10 @@
 export const users = [
   {
     id: 1,
-    username: 'goldenfish',
+    username: 'griffiths.reads',
     firstName: 'Aurora',
     lastName: 'Griffiths',
-    bio: "I could've told you my whole autobiography, but I didn't felt like it.",
+    bio: 'My shelves are "finished," "abandoned with love," and "Nevermore." I make pasta while the universe falls apart. 5 stars.',
     avatarUrl: '/img/users/haylee.webp',
     email: 'goldenfish@fictolab.co',
     password: 'secret',

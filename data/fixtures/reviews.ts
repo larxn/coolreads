@@ -12,7 +12,7 @@ export const reviews = [
   {
     id: 2,
     content:
-      'This book was wonderfully odd. I loved it! Murakami toys in the subconscious, where many unknown but important things brew. He gets you to exist in the imaginative, fun parts of the mind where curiosities, color, and meaning abound. He creates scattered, strange, fragmented, powerful images that end up connecting with just-the-right timing, creating something indescribable, yet satisfying. He manages to meld the unbelievable with the everyday, craftily, so that what would typically seem like fantasy, takes on real life. He allows us to intuitively grasp the wider ranges in our perceptions.',
+      'Toru Okada loses his cat. then his wife. then approximately his entire grip on consensual reality. and through it all he keeps making pasta and ironing shirts and being the most aggressively normal guy possible while the universe comes completely apart around him. this book is 600 pages of that and i mean it as a compliment.\n\nmurakami does something genuinely strange here: he gives you a mystery with no clean solution, a war trauma subplot that will wreck you, a woman who communicates through a psychic telephone call, and a villain who might be metaphorical. then he just… leaves you with it. like a bird you can hear but never see.',
     userId: 1,
     bookId: 3,
     socialMetaId: null,
@@ -23,7 +23,7 @@ export const reviews = [
   {
     id: 4,
     content:
-      "I think the only other book I've ever read in one sitting was Animal Farm and that was just because that book is really short and easy to read. Reading usually makes me fall asleep, even when I'm really into it. I stayed up until 4:30 in the morning reading this book and I'm too wound up to sleep even though I finished it.",
+      'Okay so maria is OUT here shoplifting, spiraling, and being terminally online in the most 2013 way possible and i felt that in my SOUL. this book is basically what happens when you hand a punk trans woman a stolen copy of the second sex and a crumbling relationship and just… let her drive west and figure it out.',
     userId: 1,
     bookId: 4,
     socialMetaId: 4,

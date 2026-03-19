@@ -16,15 +16,8 @@ import type {
   ActivityType,
 } from '@/lib/models/content'
 
-function getUser(userId: number) {
-  const u = users.find((u) => u.id === userId)!
-  return {
-    id: u.id,
-    username: u.username,
-    firstName: u.firstName,
-    lastName: u.lastName,
-    avatarUrl: u.avatarUrl,
-  }
+export function getUser(userId: number) {
+  return users.find((u) => u.id === userId)!
 }
 
 function getAuthorsForBook(bookId: number) {

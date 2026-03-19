@@ -1,5 +1,7 @@
 <script setup lang="ts">
 const avatarUrl = '/img/users/haylee.webp'
+
+const profile = getUser(1)
 </script>
 
 <template>
@@ -14,15 +16,15 @@ const avatarUrl = '/img/users/haylee.webp'
         <h1
           class="text-2xl font-semibold md:mb-0.5 md:text-3xl md:leading-none"
         >
-          Aurora Griffiths
+          {{ profile.firstName }} {{ profile.lastName }}
         </h1>
-        <p class="text-lg leading-5 text-gray-200">@goldenfish</p>
+        <p class="text-lg leading-5 text-gray-200">@{{ profile.username }}</p>
       </div>
 
       <!-- Description -->
       <div class="basis-full md:order-3">
         <p class="mx-auto max-w-xs md:max-w-none">
-          I could’ve told you my whole autobiography, but I didn’t felt like it.
+          {{ profile.bio }}
         </p>
       </div>
 
