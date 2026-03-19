@@ -6,7 +6,7 @@ import { leaderboard } from '@/data/fixtures/leaderboard'
   <section>
     <WidgetHeader title="20 Reviews Challenge" subtitle="Leaderboard" />
 
-    <section class="my-4 flex flex-col gap-y-4 px-6">
+    <section class="mt-4 flex flex-col gap-y-4 px-6">
       <NuxtLink v-for="user in leaderboard" :key="user.id" href="#">
         <article class="flex items-start gap-x-2.5">
           <BaseAvatar :src="user.avatarUrl" variant="medium" />
@@ -23,11 +23,6 @@ import { leaderboard } from '@/data/fixtures/leaderboard'
           <BaseBadge>{{ user.points }}</BaseBadge>
         </article>
       </NuxtLink>
-    </section>
-
-    <section class="flex gap-x-2.5 px-6">
-      <BaseInput placeholder="Find users..." />
-      <BaseButton variant="secondary">Find</BaseButton>
     </section>
   </section>
 </template>
